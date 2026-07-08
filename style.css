@@ -8,7 +8,6 @@ body {
   font-family: sans-serif;
   background: #0a0a0a;
   color: white;
-  overflow: hidden;
 }
 
 #bg {
@@ -20,18 +19,85 @@ body {
   z-index: 0;
 }
 
-.content {
+section {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   text-align: center;
+  padding: 4rem 2rem;
 }
 
-.content h1 {
+.hero {
+  min-height: 100vh;
+}
+
+.hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+.about p {
+  max-width: 500px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.projects h2,
+.about h2,
+.contact h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.project-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 220px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.contact-links a {
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.contact-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
