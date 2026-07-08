@@ -30,17 +30,31 @@ window.addEventListener('mousemove', (event) => {
   mouseY = (event.clientY / window.innerHeight) * 2 - 1;
 });
 
+//Track Scrolling
+let scrollY = 0;
+
+window.addEventListener('scroll', () => {
+  scrollY = window.scrollY;
+});
+
 //Animation
 function animate() {
   requestAnimationFrame(animate);
 
-  //Constant spin
+  //slow spin
   torus.rotation.x += 0.003;
   torus.rotation.y += 0.005;
 
-  //tilt towards mouse cursor
+  //foloow cursor
   torus.rotation.y += mouseX * 0.01;
   torus.rotation.x += mouseY * 0.01;
+
+  //torus speeds
+  torus.rotation.z = scrollY * 0.002;
+
+  // torus shrinks
+  const scale = Math.max(1 - scrollY * 0.0008, 0.4);
+  torus.scale.set(scale, scale, scale);
 
   renderer.render(scene, camera);
 }
