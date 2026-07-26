@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vikas — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,16 +17,129 @@
 
   <section class="about">
     <h2>About me</h2>
-    <p>I'm a developer learning things — currently building projects with FastAPI, Docker, and Three.js. This site is one of them.</p>
+    <p>I'm a developer learning things — currently building projects with FastAPI, Docker, Three.js, and more. This site is one of them.</p>
   </section>
 
   <section class="projects">
     <h2>Projects</h2>
     <div class="project-grid">
-      <a href="https://github.com/vikasranax/taskflow-api" class="project-card">
-        <h3>TaskFlow</h3>
-        <p>REST API with FastAPI, Docker, and CI/CD</p>
-      </a>
+
+      <!-- TaskFlow API -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/taskflow-api" alt="TaskFlow API preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>TaskFlow API</h3>
+          <p>REST API with FastAPI, Docker, and CI/CD</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Docker</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/vikasranax/taskflow-api" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Product Configurator -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/3d-product-configurator" alt="3D Product Configurator preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>3D Product Configurator</h3>
+          <p>Interactive 3D product customization tool built with Three.js</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Three.js</span>
+            <span class="tag">WebGL</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://vikasranax.github.io/3d-product-configurator/" target="_blank" class="btn btn-live">Live Demo</a>
+            <a href="https://github.com/vikasranax/3d-product-configurator" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DocMind -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/docmind" alt="DocMind preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>DocMind</h3>
+          <p>AI-powered document intelligence and management platform</p>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">AI</span>
+            <span class="tag">Full Stack</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/vikasranax/docmind" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculator -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/calculator" alt="Calculator preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>Calculator</h3>
+          <p>Clean, responsive calculator web application</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://vikasranax.github.io/calculator/" target="_blank" class="btn btn-live">Live Demo</a>
+            <a href="https://github.com/vikasranax/calculator" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Automation -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/test-automation" alt="Test Automation preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>Test Automation</h3>
+          <p>Automated testing framework and scripts for QA workflows</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Automation</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/vikasranax/test-automation" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- C++ Programs -->
+      <div class="project-card">
+        <div class="project-preview">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/cpp-programs" alt="C++ Programs preview" loading="lazy" />
+        </div>
+        <div class="project-info">
+          <h3>C++ Programs</h3>
+          <p>Collection of C++ algorithms, data structures, and problem solutions</p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">DSA</span>
+            <span class="tag">Algorithms</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/vikasranax/cpp-programs" target="_blank" class="btn btn-source">Source Code</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -41,3 +155,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
+</html>
