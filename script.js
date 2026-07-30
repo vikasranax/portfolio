@@ -29,7 +29,7 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 
 const particlesMaterial = new THREE.PointsMaterial({
   size: 0.25,
-  color: 0xa78bfa,
+  color: 0xa78bf,
   transparent: true,
   opacity: 0.8,
   blending: THREE.AdditiveBlending
