@@ -3,333 +3,269 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vikas Rana — Full-Stack Developer & AI Builder" />
-  <title>Vikas Rana — Developer Portfolio</title>
+  <title>Vikas Rana — Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/font/geist-sans/style.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div id="loader">
-    <div class="loader-ring"></div>
-    <p>Building your experience...</p>
-  </div>
+  <canvas id="bg"></canvas>
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-outline"></div>
-
-  <!-- Navigation -->
   <nav id="navbar">
     <a href="#" class="nav-logo">VRX</a>
     <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#stack">Stack</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="nav-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span>
     </button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
+    <a href="#work">Work</a>
     <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#stack">Stack</a>
     <a href="#contact">Contact</a>
   </div>
 
-  <!-- Three.js Canvas -->
-  <canvas id="bg"></canvas>
-
-  <!-- Hero -->
+  <!-- Hero: The thesis is the terminal -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <p class="hero-eyebrow">Hello, I'm</p>
-      <h1 class="hero-title">Vikas Rana</h1>
-      <p class="hero-subtitle">
-        Building intelligent systems at the intersection of 
-        <span class="gradient-text">code</span>, 
-        <span class="gradient-text">data</span>, & 
-        <span class="gradient-text">geopolitics</span>.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="https://github.com/vikasranax" target="_blank" class="btn btn-outline">GitHub</a>
+      <div class="terminal" id="terminal">
+        <span class="terminal-cursor" id="cursor">_</span>
       </div>
-      <div class="hero-socials">
-        <a href="https://github.com/vikasranax" target="_blank" aria-label="GitHub">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/vikasranax" target="_blank" aria-label="LinkedIn">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://x.com/vikasranax" target="_blank" aria-label="X / Twitter">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-        <a href="mailto:vikasranax@yahoo.com" aria-label="Email">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
+      <h1 class="hero-name">Vikas Rana</h1>
+      <p class="hero-line">Full-stack developer. Sails across AI, geopolitics, 3D, and games.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View work</a>
+        <a href="https://github.com/vikasranax" target="_blank" class="btn btn-ghost">GitHub</a>
       </div>
     </div>
-    <div class="scroll-indicator">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </section>
+
+  <!-- Work -->
+  <section class="work" id="work">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Selected work</p>
+      <h2>Things I've built</h2>
+    </div>
+
+    <!-- Featured -->
+    <article class="project project-featured reveal">
+      <div class="project-visual">
+        <img src="assets/previews/earth-monitor.png" alt="Earth Monitor" loading="lazy" />
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-tag tag-gold">Flagship</span>
+          <span class="project-year">2026</span>
+        </div>
+        <h3 class="project-title">Earth Monitor (जगत्-मन्थन)</h3>
+        <p class="project-desc">Real-time global intelligence terminal ingesting multiple live sources — geopolitics, markets, shipping, airspace, disasters, health, space, energy, cyber, and supply chains. AI-analysed. Target operating cost: $0/month.</p>
+        <div class="project-tech">
+          <span>Next.js</span><span>TypeScript</span><span>AI</span><span>Multiple APIs</span><span>Music</span>
+        </div>
+        <div class="project-links">
+          <a href="https://jagatmanthan.vercel.app" target="_blank" class="link-live">Track Global Events</a>
+          <a href="https://github.com/vikasranax/earth-monitor" target="_blank" class="link-source">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Grid -->
+    <div class="project-grid">
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="assets/previews/csb.png" alt="Color Switch Blast" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Color Switch Blast</h3>
+          <p class="project-desc">Tap-tap arcade game. Switch your ball's color to match incoming neon beams. Built for web and YouTube Playables. Also have symbols for colorblind people.</p>
+          <div class="project-tech">
+            <span>Vanilla JS</span><span>Canvas</span><span>Game Dev</span>
+          </div>
+          <div class="project-links">
+            <a href="https://vikasranax.github.io/color-switch/" target="_blank" class="link-live">Play Game</a>
+            <a href="https://github.com/vikasranax/color-switch" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/bounce-ball" alt="Bounce Ball" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">Bounce Ball</h3>
+          <p class="project-desc">Rolling and bouncing physics game. Navigate obstacles, collect eggs and fruits, and beat your high score.</p>
+          <div class="project-tech">
+            <span>JavaScript</span><span>Canvas</span><span>Physics</span>
+          </div>
+          <div class="project-links">
+            <a href="https://vikasranax.github.io/bounce-ball/" target="_blank" class="link-live">Play Game</a>
+            <a href="https://github.com/vikasranax/bounce-ball" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/saas-landing" alt="SaaS Landing" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">SaaS Landing Page</h3>
+          <p class="project-desc">Conversion-optimized landing page with smooth animations and fully responsive design.</p>
+          <div class="project-tech">
+            <span>TypeScript</span><span>React</span><span>Tailwind</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/vikasranax/saas-landing" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="assets/previews/indrisma.png" alt="VRX Music" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+          </div>
+          <h3 class="project-title">INDRISMA</h3>
+          <p class="project-desc">Music player with custom backgrounds. Add your own tracks and movies with a dedicated visual experience.</p>
+          <div class="project-tech">
+            <span>JavaScript</span><span>Audio API</span><span>UI/UX</span>
+          </div>
+          <div class="project-links">
+            <a href="https://vrxmusic.vercel.app/" target="_blank" class="link-live">Play Music</a>
+            <a href="https://github.com/vikasranax/vrxmusic" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/docmind" alt="DocMind" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+          </div>
+          <h3 class="project-title">DocMind</h3>
+          <p class="project-desc">AI-powered document intelligence platform. Extract insights from unstructured documents.</p>
+          <div class="project-tech">
+            <span>TypeScript</span><span>AI</span><span>Full Stack</span>
+          </div>
+          <div class="project-links">
+            <a href="https://docmind-fxw0.onrender.com/" target="_blank" class="link-live">Summarize Docs</a>
+            <a href="https://github.com/vikasranax/docmind" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="assets/previews/3d-configurator.png" alt="3D Configurator" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+          </div>
+          <h3 class="project-title">3D Product Configurator</h3>
+          <p class="project-desc">Interactive 3D product customization tool built with Three.js and WebGL.</p>
+          <div class="project-tech">
+            <span>JavaScript</span><span>Three.js</span><span>WebGL</span>
+          </div>
+          <div class="project-links">
+            <a href="https://3d-product-configurator-inky.vercel.app/" target="_blank" class="link-live">Demo</a>
+            <a href="https://github.com/vikasranax/3d-product-configurator" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-visual">
+          <img src="https://opengraph.githubassets.com/1/vikasranax/taskflow-api" alt="TaskFlow" loading="lazy" />
+        </div>
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="project-year">2026</span>
+          </div>
+          <h3 class="project-title">TaskFlow API</h3>
+          <p class="project-desc">Production-ready REST API with FastAPI, Docker, and CI/CD pipeline.</p>
+          <div class="project-tech">
+            <span>Python</span><span>FastAPI</span><span>Docker</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/vikasranax/taskflow-api" target="_blank" class="link-source">Source</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Upcoming -->
+    <div class="section-header reveal" style="margin-top: 6rem;">
+      <p class="section-eyebrow">Up next</p>
+      <h2>Projects to Come Soon</h2>
+    </div>
+
+    <div class="upcoming-list">
+      <div class="upcoming-item reveal">
+        <span class="upcoming-status">Planned</span>
+        <h4>Real-Time Chat Platform</h4>
+        <p>.NET Core + SignalR + Redis pub/sub. PostgreSQL persistence, Docker deployment.</p>
+        <div class="project-tech"><span>.NET</span><span>SignalR</span><span>Redis</span><span>PostgreSQL</span></div>
+      </div>
+      <div class="upcoming-item reveal">
+        <span class="upcoming-status">Planned</span>
+        <h4>Microservices Order System</h4>
+        <p>gRPC services, Redis caching, RabbitMQ messaging, .NET architecture.</p>
+        <div class="project-tech"><span>.NET</span><span>gRPC</span><span>Redis</span><span>RabbitMQ</span></div>
+      </div>
+      <div class="upcoming-item reveal">
+        <span class="upcoming-status">Planned</span>
+        <h4>AI Code Review Agent</h4>
+        <p>GitHub-integrated AI agent. Reviews PRs, suggests refactors, enforces standards.</p>
+        <div class="project-tech"><span>Python</span><span>OpenAI</span><span>GitHub API</span><span>FastAPI</span></div>
+      </div>
+      <div class="upcoming-item reveal">
+        <span class="upcoming-status">Planned</span>
+        <h4>Design System Kit</h4>
+        <p>50+ components, dark mode, accessibility-first. Figma + React + Storybook.</p>
+        <div class="project-tech"><span>Figma</span><span>React</span><span>Storybook</span><span>Tailwind</span></div>
+      </div>
+      <div class="upcoming-item reveal">
+        <span class="upcoming-status">Planned</span>
+        <h4>Real-Time Analytics Dashboard</h4>
+        <p>Event-driven analytics with ClickHouse, Redis Streams, React. Sub-second queries.</p>
+        <div class="project-tech"><span>React</span><span>ClickHouse</span><span>Redis</span><span>Kafka</span></div>
+      </div>
     </div>
   </section>
 
   <!-- About -->
   <section class="about" id="about">
-    <div class="about-grid">
-      <div class="about-left reveal">
-        <div class="about-avatar">
-          <div class="avatar-ring"></div>
-          <div class="avatar-inner">VRX</div>
-        </div>
-        <div class="about-stats">
-          <div class="stat"><span class="stat-num">11+</span><span class="stat-label">Repos</span></div>
-          <div class="stat"><span class="stat-num">7+</span><span class="stat-label">Projects</span></div>
-          <div class="stat"><span class="stat-num">Full</span><span class="stat-label">Stack</span></div>
-        </div>
-      </div>
-      <div class="about-right reveal">
-        <h2>About Me</h2>
-        <p>
-          I'm a developer who thrives at the edge of disciplines — building AI-driven geopolitical intelligence platforms, 
-          immersive 3D configurators, and production-grade APIs. From FastAPI backends to Three.js frontends, 
-          I ship systems that are fast, beautiful, and meaningful.
-        </p>
-        <div class="skill-pills">
-          <span class="pill">FastAPI</span>
-          <span class="pill">Next.js</span>
-          <span class="pill">Three.js</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">Python</span>
-          <span class="pill">Docker</span>
-          <span class="pill">AI / LLMs</span>
-          <span class="pill">Geopolitics</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="projects" id="projects">
-    <h2 class="section-title reveal">Projects</h2>
-
-    <!-- Featured -->
-    <div class="featured-project reveal">
-      <div class="project-card card-featured" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/earth-monitor.png" alt="Earth Monitor preview" loading="lazy" />
-          <span class="badge badge-featured">Flagship</span>
-        </div>
-        <div class="project-info">
-          <h3>Earth Monitor (जगत्-मन्थन)</h3>
-          <p>Real-time global intelligence terminal ingesting 31+ live sources — geopolitics, markets, shipping, airspace, disasters, health, space, energy, cyber & supply chains. AI-analysed. Bloomberg-grade dashboard. Target cost: $0/month.</p>
-          <div class="project-tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">AI</span>
-            <span class="tag">Geopolitics</span>
-            <span class="tag">31 APIs</span>
-          </div>
-          <div class="project-actions">
-            <a href="https://jagatmanthan.vercel.app/" target="_blank" class="btn btn-live">See Global events</a>
-            <a href="https://github.com/vikasranax/earth-monitor" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Completed Grid -->
-    <div class="project-grid">
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/saas-landing.jpg" alt="SaaS Landing preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>SaaS Landing Page</h3>
-          <p>Modern, conversion-optimized landing page with smooth animations and responsive design.</p>
-          <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Tailwind</span></div>
-          <div class="project-actions">
-            <a href="https://github.com/vikasranax/saas-landing" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/vrxmusic.png" alt="VRX Music preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>VRX Music</h3>
-          <p>Music player with custom backgrounds. Play your own tracks with a dedicated visual experience.</p>
-          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Audio API</span><span class="tag">UI/UX</span></div>
-          <div class="project-actions">
-            <a href="https://vrxmusic.vercel.app/" target="_blank" class="btn btn-live">Play Music</a>
-            <a href="https://github.com/vikasranax/vrxmusic" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/docmind.jpg" alt="DocMind preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>DocMind</h3>
-          <p>AI-powered document intelligence and management platform.</p>
-          <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">AI</span><span class="tag">Full Stack</span></div>
-          <div class="project-actions">
-            <a href="https://docmind-fxw0.onrender.com/" target="_blank" class="btn btn-live">Summarize Documents</a>
-            <a href="https://github.com/vikasranax/docmind" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/3d-configurator.png" alt="3D Configurator preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>3D Product Configurator</h3>
-          <p>Interactive 3D product customization tool built with Three.js and WebGL.</p>
-          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
-          <div class="project-actions">
-            <a href="https://vikasranax.github.io/3d-product-configurator/" target="_blank" class="btn btn-live">Live Demo</a>
-            <a href="https://github.com/vikasranax/3d-product-configurator" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/taskflow.jpg" alt="TaskFlow preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>TaskFlow API</h3>
-          <p>Production-ready REST API with FastAPI, Docker, and CI/CD pipeline.</p>
-          <div class="project-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Docker</span></div>
-          <div class="project-actions">
-            <a href="https://github.com/vikasranax/taskflow-api" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/calculator.png" alt="Calculator preview" loading="lazy" />
-        </div>
-        <div class="project-info">
-          <h3>Calculator</h3>
-          <p>Clean, responsive calculator web application with keyboard support.</p>
-          <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-          <div class="project-actions">
-            <a href="https://vikasranax.github.io/calculator/" target="_blank" class="btn btn-live">Calculate</a>
-            <a href="https://github.com/vikasranax/calculator" target="_blank" class="btn btn-source">Source Code</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Upcoming -->
-    <h3 class="upcoming-title reveal">Upcoming</h3>
-    <div class="upcoming-grid">
-      <div class="project-card card-planned" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/upcoming-mobile.jpg" alt="Mobile App UI/UX" loading="lazy" />
-          <span class="badge badge-planned">Planned</span>
-        </div>
-        <div class="project-info">
-          <h3>Mobile App UI/UX Case Study</h3>
-          <p>End-to-end mobile application design system and interaction patterns.</p>
-          <div class="project-tags"><span class="tag">Figma</span><span class="tag">React Native</span><span class="tag">Design</span></div>
-        </div>
-      </div>
-
-      <div class="project-card card-planned" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/upcoming-ecommerce.jpg" alt="E-Commerce Storefront" loading="lazy" />
-          <span class="badge badge-planned">Planned</span>
-        </div>
-        <div class="project-info">
-          <h3>E-Commerce Storefront</h3>
-          <p>Full-stack e-commerce platform with cart, checkout, and payment integration.</p>
-          <div class="project-tags"><span class="tag">Next.js</span><span class="tag">Stripe</span><span class="tag">PostgreSQL</span></div>
-        </div>
-      </div>
-
-      <div class="project-card card-planned" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/upcoming-dashboard.jpg" alt="SaaS Admin Dashboard" loading="lazy" />
-          <span class="badge badge-planned">Planned</span>
-        </div>
-        <div class="project-info">
-          <h3>SaaS Admin Dashboard</h3>
-          <p>Analytics-heavy admin panel with charts, tables, and role-based access.</p>
-          <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">D3.js</span><span class="tag">Auth</span></div>
-        </div>
-      </div>
-
-      <div class="project-card card-planned" data-tilt>
-        <div class="project-preview">
-          <img src="assets/previews/upcoming-agency.jpg" alt="Agency Portfolio Template" loading="lazy" />
-          <span class="badge badge-planned">Planned</span>
-        </div>
-        <div class="project-info">
-          <h3>Agency Portfolio Template</h3>
-          <p>High-converting agency website template with CMS integration.</p>
-          <div class="project-tags"><span class="tag">Next.js</span><span class="tag">Sanity</span><span class="tag">Framer</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="stack" id="stack">
-    <h2 class="section-title reveal">Tech Stack</h2>
-    <div class="stack-grid reveal">
-      <div class="stack-category">
-        <h4>Frontend</h4>
-        <div class="stack-items">
-          <div class="stack-item"><span>Next.js</span></div>
-          <div class="stack-item"><span>React</span></div>
-          <div class="stack-item"><span>TypeScript</span></div>
-          <div class="stack-item"><span>Tailwind</span></div>
-          <div class="stack-item"><span>Three.js</span></div>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h4>Backend</h4>
-        <div class="stack-items">
-          <div class="stack-item"><span>FastAPI</span></div>
-          <div class="stack-item"><span>Python</span></div>
-          <div class="stack-item"><span>Node.js</span></div>
-          <div class="stack-item"><span>PostgreSQL</span></div>
-          <div class="stack-item"><span>Docker</span></div>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h4>AI & Data</h4>
-        <div class="stack-items">
-          <div class="stack-item"><span>OpenAI API</span></div>
-          <div class="stack-item"><span>LangChain</span></div>
-          <div class="stack-item"><span>Pandas</span></div>
-          <div class="stack-item"><span>Selenium</span></div>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h4>DevOps & Tools</h4>
-        <div class="stack-items">
-          <div class="stack-item"><span>Git</span></div>
-          <div class="stack-item"><span>GitHub Actions</span></div>
-          <div class="stack-item"><span>Vercel</span></div>
-          <div class="stack-item"><span>Linux</span></div>
+    <div class="about-inner reveal">
+      <div class="about-avatar">VRX</div>
+      <div class="about-text">
+        <p class="section-eyebrow">About</p>
+        <h2>I build systems that matter</h2>
+        <p>From AI-driven geopolitical intelligence platforms to arcade games willing to publish on YouTube Playables, I ship end-to-end products that are fast, beautiful, and meaningful. FastAPI backends, Three.js frontends, and everything .........</p>
+        <div class="skill-list">
+          <span>FastAPI</span><span>Next.js</span><span>Three.js</span><span>TypeScript</span>
+          <span>Python</span><span>Docker</span><span>Redis</span><span>PostgreSQL</span>
+          <span>AI / LLMs</span><span>.NET</span><span>gRPC</span><span>Geopolitics</span>
         </div>
       </div>
     </div>
@@ -337,28 +273,22 @@
 
   <!-- Contact -->
   <section class="contact" id="contact">
-    <div class="contact-content reveal">
-      <h2>Let's build something together</h2>
-      <p>Open to collaborations, freelance work, and interesting ideas.</p>
+    <div class="contact-inner reveal">
+      <p class="section-eyebrow">Contact</p>
+      <h2>Let's build something</h2>
+      <p>Open to collaborations, contract work, and interesting problems.</p>
       <a href="mailto:vikasranax@yahoo.com" class="btn btn-primary btn-large">vikasranax@yahoo.com</a>
-      <div class="contact-socials">
+      <div class="contact-links">
         <a href="https://github.com/vikasranax" target="_blank">GitHub</a>
         <a href="https://linkedin.com/in/vikasranax" target="_blank">LinkedIn</a>
-        <a href="https://x.com/vikasranax" target="_blank">X / Twitter</a>
-        <a href="https://instagram.com/vikasranax" target="_blank">Instagram</a>
+        <a href="https://x.com/vikasranax" target="_blank">X</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>Built with Three.js, curiosity & tea — VRX</p>
+    <p>Built with Tea in INDIA — Vikas Rana</p>
   </footer>
-
-  <!-- Back to Top -->
-  <button id="backToTop" aria-label="Back to top">
-    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
