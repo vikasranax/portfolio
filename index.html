@@ -1,77 +1,65 @@
 <!DOCTYPE html>
-<html lang="sa">
+<html lang="sa" class="ld-on">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>विकासः राणा — विकासकः</title>
+<title>विकासः राणा: — विकासकः</title>
 <meta name="description" content="Vikas Rana (विकास राणा): developer building AI tools, games and learning platforms. Earth Monitor, Paathsala, DocMind and more.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff6b6b'/%3E%3Cg fill='none' stroke='%23070b1c' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 16V84H50V16H84V84'/%3E%3Cpath d='M16 16L84 84M16 84L84 16'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#f4f3ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23111'/%3E%3Cg fill='none' stroke='%23f4f3ee' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 16V84H50V16H84V84'/%3E%3Cpath d='M16 16L84 84M16 84L84 16'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#projects">Skip to projects</a>
-<div id="bar" aria-hidden="true"></div>
-<canvas id="gl" aria-hidden="true"></canvas>
-<div id="cg" aria-hidden="true"></div>
+<div class="ld" id="ld"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" class="rg0"/><circle cx="50" cy="50" r="40" class="rg" id="ldr"/><circle cx="50" cy="50" r="0" id="ldf"/></svg><p class="ln" id="ldn">0%</p><p class="lt">CIRCLE → SOLID</p><p class="ls">CLICK OR PRESS ANY KEY TO SKIP</p></div>
+<a class="skip" href="#work">Skip to work</a>
 <header class="nav">
-<a class="brand" href="#top" aria-label="Home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14V86H50V14H86V86"/><path d="M14 14L86 86M14 86L86 14"/></g></svg>VRX</a>
-<nav aria-label="Primary"><a href="#projects" data-i="nP"></a><a href="#toolbox" data-i="tH"></a><a href="#about" data-i="nA"></a><a href="#contact" data-i="nC"></a></nav>
+<a class="brand" href="#top"><b data-i="name"></b><small>Software · Games · AI</small></a>
+<nav aria-label="Primary"><a href="#showcase" data-i="nP"></a><a href="#work" data-i="sel"></a><a href="#skills" data-i="tH"></a><a href="#about" data-i="nA"></a><a href="#contact" data-i="nC"></a></nav>
 <div class="lang" role="group" aria-label="Language"><button type="button" data-l="sa" lang="sa" title="संस्कृतम्" aria-label="संस्कृतम्">सं</button><button type="button" data-l="hi" lang="hi" title="हिन्दी" aria-label="हिन्दी">हि</button><button type="button" data-l="en" lang="en" title="English" aria-label="English">EN</button></div>
 </header>
-<nav class="rail" id="rail" aria-label="Projects"></nav>
-
 <main id="top">
 <div class="hero">
-<p class="kick"><i></i><span data-i="kick"></span></p>
-<h1 data-i="name"></h1>
+<svg class="orb" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="196" fill="none" stroke="#111" stroke-opacity=".16" stroke-dasharray="3 9"/><circle cx="200" cy="200" r="150" fill="none" stroke="#111" stroke-opacity=".14"/><circle cx="200" cy="200" r="104" fill="#ff4d2e"/><circle cx="200" cy="200" r="104" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="2 8"/><circle cx="352" cy="200" r="9" fill="#111" class="dot"/></svg>
+<h1><span data-i="first"></span><em data-i="last"></em></h1>
+<p class="tl" data-i="tl"></p>
 <p class="lead" data-i="lead"></p>
-<p class="open"><span data-i="open"></span></p>
-<div class="btns"><a class="btn p" href="#projects" data-i="b1"></a><a class="btn" href="https://github.com/vikasranax" target="_blank" rel="noopener">GitHub</a></div>
-<p class="hint"><svg viewBox="0 0 24 36" aria-hidden="true"><rect x="2" y="2" width="20" height="32" rx="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="3" fill="currentColor" class="dot"/></svg><span data-i="hint"></span></p>
-<svg class="range" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-<defs><linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff6b6b"/></linearGradient></defs>
-<circle cx="120" cy="60" r="1.6" fill="#fff" class="pl" style="animation-delay:0.0s"/><circle cx="300" cy="110" r="1.6" fill="#fff" class="pl" style="animation-delay:0.6s"/><circle cx="520" cy="48" r="1.6" fill="#fff" class="pl" style="animation-delay:1.1s"/><circle cx="760" cy="90" r="1.6" fill="#fff" class="pl" style="animation-delay:0.3s"/><circle cx="1240" cy="70" r="1.6" fill="#fff" class="pl" style="animation-delay:0.9s"/><circle cx="1380" cy="130" r="1.6" fill="#fff" class="pl" style="animation-delay:1.4s"/><circle cx="60" cy="150" r="1.6" fill="#fff" class="pl" style="animation-delay:0.5s"/>
-<g class="ly" style="--k:10px"><circle cx="1010" cy="210" r="190" fill="none" stroke="rgba(255,183,3,.14)"/><circle cx="1010" cy="210" r="150" fill="none" stroke="rgba(255,183,3,.22)"/><circle cx="1010" cy="210" r="104" fill="url(#sun)"/></g>
-<g class="ly" style="--k:-8px"><path fill="#1b2160" d="M-60 420V260L60 230L120 190L230 260L370 150L520 250L640 200L780 280L920 170L1080 260L1220 210L1340 270L1500 220V420Z"/><path fill="#dbe3ff" opacity=".85" d="M340 182L370 150L400 184L384 176L370 190L356 176ZM892 202L920 170L948 204L934 196L920 210L906 196Z"/></g>
-<g class="ly" style="--k:-16px"><path fill="#131a4b" d="M-60 420V310L160 240L300 310L460 230L610 320L760 260L900 330L1060 250L1220 330L1340 280L1500 310V420Z"/></g>
-<g class="ly" style="--k:-26px"><path fill="#0c1238" d="M-60 420V350L200 310L380 360L560 320L760 372L960 330L1160 376L1320 340L1500 360V420Z"/></g>
-<path fill="#070b1c" d="M-60 420V396L240 376L480 398L760 382L1040 400L1260 380L1500 396V420Z"/>
-</svg>
+<div class="meta"><a class="pill" href="#contact"><i></i><span data-i="avail"></span></a><a class="btn" href="https://github.com/vikasranax" target="_blank" rel="noopener">GitHub ↗</a></div>
 </div>
 
-<div class="marq" aria-hidden="true"><div><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>Canvas</span><span>Redis</span><span>Docker</span><span>Leaflet</span><span>Tailwind</span><span>Playwright</span><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>Canvas</span><span>Redis</span><span>Docker</span><span>Leaflet</span><span>Tailwind</span><span>Playwright</span></div></div>
-
-<section id="projects">
-<div class="sh rv"><h2 data-i="pH"></h2><p data-i="pI"></p></div>
-<div id="chapters"></div>
-<div class="btns more"><a class="btn" href="https://github.com/vikasranax?tab=repositories" target="_blank" rel="noopener" data-i="all"></a></div>
+<section id="showcase" class="wide">
+<div class="sh rv"><h2 data-i="nP"></h2><p data-i="pI"></p></div>
+<div class="track" id="track" tabindex="0" aria-label="Projects"></div>
+<div class="ctl"><button type="button" id="prev" aria-label="Previous">←</button><button type="button" id="next" aria-label="Next">→</button><span data-i="drag"></span></div>
 </section>
 
-<section id="toolbox">
+<div class="marq" aria-hidden="true"><div><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Canvas</span><span>Leaflet</span><span>Tailwind</span><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Canvas</span><span>Leaflet</span><span>Tailwind</span></div></div>
+
+<section id="work">
+<div class="sh rv"><h2 data-i="sel"></h2><p data-i="selI"></p></div>
+<div class="filters" id="filters" role="group" aria-label="Filter"></div>
+<div class="grid" id="grid"></div>
+<div class="btns"><a class="btn" href="https://github.com/vikasranax?tab=repositories" target="_blank" rel="noopener" data-i="all"></a></div>
+</section>
+
+<section id="skills">
 <div class="sh rv"><h2 data-i="tH"></h2></div>
-<div class="tools rv"><div class="tool"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 8l-6 8 6 8M24 8l6 8-6 8M19 4l-6 24"/></svg><h3 data-i="g1"></h3><div class="chips"><span class=chip>Next.js</span><span class=chip>React</span><span class=chip>TypeScript</span><span class=chip>Tailwind</span><span class=chip>Zustand</span><span class=chip>Leaflet</span></div></div><div class="tool"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="5" width="24" height="7" rx="2"/><rect x="4" y="15" width="24" height="7" rx="2"/><path d="M9 8.5h.01M9 18.5h.01M8 26h16"/></svg><h3 data-i="g2"></h3><div class="chips"><span class=chip>FastAPI</span><span class=chip>Prisma</span><span class=chip>PostgreSQL</span><span class=chip>Redis</span><span class=chip>Docker</span><span class=chip>CI/CD</span></div></div><div class="tool"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="6" cy="8" r="3"/><circle cx="6" cy="24" r="3"/><circle cx="16" cy="16" r="3"/><circle cx="26" cy="16" r="3"/><path d="M8.6 9.5l5 5M8.6 22.5l5-5M19 16h4"/></svg><h3 data-i="g3"></h3><div class="chips"><span class=chip>AI/LLMs</span><span class=chip>Live data feeds</span><span class=chip>Vitest</span><span class=chip>Playwright</span></div></div><div class="tool"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 6v14l-11 6-11-6V9zM16 15l11-6M16 15L5 9M16 15v14"/></svg><h3 data-i="g4"></h3><div class="chips"><span class=chip>Three.js</span><span class=chip>WebGL</span><span class=chip>Canvas</span><span class=chip>Audio API</span><span class=chip>Physics</span></div></div></div>
+<div class="sks rv"><div class="sk"><h3 data-i="g1"></h3><div class="chips"><span class=chip>Next.js</span><span class=chip>React</span><span class=chip>TypeScript</span><span class=chip>Tailwind</span><span class=chip>Zustand</span><span class=chip>Leaflet</span></div></div><div class="sk"><h3 data-i="g2"></h3><div class="chips"><span class=chip>FastAPI</span><span class=chip>Prisma</span><span class=chip>PostgreSQL</span><span class=chip>Redis</span><span class=chip>Docker</span><span class=chip>CI/CD</span></div></div><div class="sk"><h3 data-i="g3"></h3><div class="chips"><span class=chip>AI/LLMs</span><span class=chip>Live data feeds</span><span class=chip>Vitest</span><span class=chip>Playwright</span></div></div><div class="sk"><h3 data-i="g4"></h3><div class="chips"><span class=chip>Three.js</span><span class=chip>WebGL</span><span class=chip>Canvas</span><span class=chip>Audio API</span><span class=chip>Physics</span></div></div></div>
 </section>
 
 <section id="about">
 <div class="sh rv"><h2 data-i="aH"></h2></div>
-<div class="about rv">
-<div><p data-i="a1"></p><p data-i="a2"></p></div>
-<div class="panel"><svg class="lock" viewBox="0 0 100 100" role="img" aria-label="VRX ambigram logo"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb703"/><stop offset="1" stop-color="#ff6b6b"/></linearGradient></defs><g><g fill="none" stroke="url(#lg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14V86H50V14H86V86"/><path d="M14 14L86 86M14 86L86 14"/></g></g></svg><p class="mt" lang="sa">न कश्चित् शाश्वतम्</p><p class="ms" data-i="aS"></p></div>
-</div>
+<div class="about rv"><div><p data-i="a1"></p><p data-i="a2"></p></div><div class="mot"><svg viewBox="0 0 100 100" role="img" aria-label="VRX logo"><g fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14V86H50V14H86V86"/><path d="M14 14L86 86M14 86L86 14"/></g></svg><p lang="sa">न कश्चित् शाश्वतम्</p><small data-i="aS"></small></div></div>
 </section>
 
 <section id="contact" class="contact">
-<svg class="sunring" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="190" fill="none" stroke="rgba(255,183,3,.14)"/><circle cx="200" cy="200" r="145" fill="none" stroke="rgba(255,183,3,.2)"/><circle cx="200" cy="200" r="100" fill="url(#sun)" opacity=".9"/></svg>
-<div class="sh rv"><h2 data-i="cH"></h2><p data-i="cI"></p></div>
-<div class="btns"><a class="btn p" href="https://github.com/vikasranax" target="_blank" rel="noopener">github.com/vikasranax</a><a class="btn" href="#projects" data-i="cB"></a></div>
+<div class="sh rv"><p data-i="cI"></p></div>
+<a class="big" href="https://github.com/vikasranax" target="_blank" rel="noopener"><span data-i="cH"></span> <b>↗</b></a>
 </section>
 </main>
-<footer data-i="foot"></footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<footer><span data-i="foot"></span><a href="#top">↑</a></footer>
 <script src="script.js" defer></script>
 </body>
 </html>
