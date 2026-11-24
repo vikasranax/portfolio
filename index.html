@@ -1,65 +1,369 @@
 <!DOCTYPE html>
-<html lang="sa" class="ld-on">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>विकासः राणा: — विकासकः</title>
-<meta name="description" content="Vikas Rana (विकास राणा): developer building AI tools, games and learning platforms. Earth Monitor, Paathsala, DocMind and more.">
-<meta name="theme-color" content="#f4f3ee">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23111'/%3E%3Cg fill='none' stroke='%23f4f3ee' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 16V84H50V16H84V84'/%3E%3Cpath d='M16 16L84 84M16 84L84 16'/%3E%3C/g%3E%3C/svg%3E">
+<title>Vikas Rana — Full-Stack Developer · .NET · Angular · AI</title>
+<meta name="description" content="Vikas Rana is a full-stack developer from India building AI tools, learning platforms and web apps. Live GitHub stats, selected projects and a .NET + Angular + AI roadmap.">
+<meta name="theme-color" content="#0a0f0d">
+<meta property="og:title" content="Vikas Rana — Full-Stack Developer">
+<meta property="og:description" content="Live GitHub stats, shipped projects, and a .NET + Angular + AI roadmap. Open to work.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230a0f0d'/%3E%3Cpath d='M26 34l18 16-18 16' stroke='%2334d399' stroke-width='9' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M54 68h20' stroke='%23e6efe9' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+/* Pre-paint theme before CSS renders to avoid a flash of the wrong theme */
+(function(){try{var t=localStorage.getItem('vr-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})();
+</script>
 </head>
 <body>
-<div class="ld" id="ld"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" class="rg0"/><circle cx="50" cy="50" r="40" class="rg" id="ldr"/><circle cx="50" cy="50" r="0" id="ldf"/></svg><p class="ln" id="ldn">0%</p><p class="lt">CIRCLE → SOLID</p><p class="ls">CLICK OR PRESS ANY KEY TO SKIP</p></div>
-<a class="skip" href="#work">Skip to work</a>
-<header class="nav">
-<a class="brand" href="#top"><b data-i="name"></b><small>Software · Games · AI</small></a>
-<nav aria-label="Primary"><a href="#showcase" data-i="nP"></a><a href="#work" data-i="sel"></a><a href="#skills" data-i="tH"></a><a href="#about" data-i="nA"></a><a href="#contact" data-i="nC"></a></nav>
-<div class="lang" role="group" aria-label="Language"><button type="button" data-l="sa" lang="sa" title="संस्कृतम्" aria-label="संस्कृतम्">सं</button><button type="button" data-l="hi" lang="hi" title="हिन्दी" aria-label="हिन्दी">हि</button><button type="button" data-l="en" lang="en" title="English" aria-label="English">EN</button></div>
+<a class="skip" href="#work">Skip to content</a>
+
+<div class="bgfx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top">vikasrana</a>
+  <nav aria-label="Primary">
+    <a href="#github">GitHub</a>
+    <a href="#work">Work</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="bar-actions">
+    <button type="button" id="themeToggle" aria-label="Toggle dark or light theme" title="Toggle theme">
+      <svg class="ic-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+      <svg class="ic-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 14.2A8.5 8.5 0 0 1 9.8 3.6a8.5 8.5 0 1 0 10.6 10.6z"/></svg>
+    </button>
+    <a class="gh-btn" href="https://github.com/vikasranax" target="_blank" rel="noopener" aria-label="Vikas Rana on GitHub">
+      <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>vikasranax</span>
+    </a>
+  </div>
 </header>
+
 <main id="top">
-<div class="hero">
-<svg class="orb" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="196" fill="none" stroke="#111" stroke-opacity=".16" stroke-dasharray="3 9"/><circle cx="200" cy="200" r="150" fill="none" stroke="#111" stroke-opacity=".14"/><circle cx="200" cy="200" r="104" fill="#ff4d2e"/><circle cx="200" cy="200" r="104" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="2 8"/><circle cx="352" cy="200" r="9" fill="#111" class="dot"/></svg>
-<h1><span data-i="first"></span><em data-i="last"></em></h1>
-<p class="tl" data-i="tl"></p>
-<p class="lead" data-i="lead"></p>
-<div class="meta"><a class="pill" href="#contact"><i></i><span data-i="avail"></span></a><a class="btn" href="https://github.com/vikasranax" target="_blank" rel="noopener">GitHub ↗</a></div>
-</div>
 
-<section id="showcase" class="wide">
-<div class="sh rv"><h2 data-i="nP"></h2><p data-i="pI"></p></div>
-<div class="track" id="track" tabindex="0" aria-label="Projects"></div>
-<div class="ctl"><button type="button" id="prev" aria-label="Previous">←</button><button type="button" id="next" aria-label="Next">→</button><span data-i="drag"></span></div>
-</section>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hw" lang="hi" aria-hidden="true">विकास</div>
+    <div class="hero-copy">
+      <p class="eyebrow rv"><span class="pulse" aria-hidden="true"></span> AVAILABLE FOR WORK · INDIA</p>
+      <h1 class="rv">VIKAS <span class="outline">RANA</span></h1>
+      <p class="role-line rv">full-stack developer — building <span class="role-wrap"><span id="role">AI-powered tools</span><span class="role-caret" aria-hidden="true">_</span></span></p>
+      <p class="lead rv">I build AI tools, learning platforms and web apps, and I ship every one of them in public on GitHub. Currently levelling up on <strong>.NET 8</strong> and <strong>Angular 19</strong> — and wiring AI into all of it.</p>
+      <div class="cta rv">
+        <a class="btn btn-primary" href="#work">View work
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="mailto:vikasranax@yahoo.com">Email me</a>
+        <a class="btn btn-ghost" href="https://github.com/vikasranax" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="hstats rv" aria-label="Live GitHub counters">
+        <div class="hstat"><b data-gh="repos">—</b><span>public repos</span></div>
+        <div class="hstat"><b data-gh="stars">—</b><span>stars earned</span></div>
+        <div class="hstat"><b data-gh="followers">—</b><span>followers</span></div>
+        <div class="hstat"><b data-gh="years">—</b><span>years on github</span></div>
+      </div>
+    </div>
+  </section>
 
-<div class="marq" aria-hidden="true"><div><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Canvas</span><span>Leaflet</span><span>Tailwind</span><span>Next.js</span><span>TypeScript</span><span>AI</span><span>Three.js</span><span>FastAPI</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Canvas</span><span>Leaflet</span><span>Tailwind</span></div></div>
+  <!-- ============ TICKER ============ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="tk-set"><span>OPEN TO WORK</span><span>.NET 8</span><span>ANGULAR 19</span><span>TYPESCRIPT</span><span>NEXT.JS</span><span>AI / LLM</span><span>RAG</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DOCKER</span><span>AZURE</span><span>SIGNALR</span><span>THREE.JS</span><span>OPEN SOURCE</span></div>
+      <div class="tk-set"><span>OPEN TO WORK</span><span>.NET 8</span><span>ANGULAR 19</span><span>TYPESCRIPT</span><span>NEXT.JS</span><span>AI / LLM</span><span>RAG</span><span>FASTAPI</span><span>POSTGRESQL</span><span>DOCKER</span><span>AZURE</span><span>SIGNALR</span><span>THREE.JS</span><span>OPEN SOURCE</span></div>
+    </div>
+  </div>
 
-<section id="work">
-<div class="sh rv"><h2 data-i="sel"></h2><p data-i="selI"></p></div>
-<div class="filters" id="filters" role="group" aria-label="Filter"></div>
-<div class="grid" id="grid"></div>
-<div class="btns"><a class="btn" href="https://github.com/vikasranax?tab=repositories" target="_blank" rel="noopener" data-i="all"></a></div>
-</section>
+  <!-- ============ 01 GITHUB LIVE ============ -->
+  <section class="section" id="github">
+    <div class="sec-head rv">
+      <div class="sec-head-row">
+        <p class="sec-tag">01 / LIVE DATA</p>
+        <span class="live-pill" id="ghStatus"><span class="sk sk-dot"></span><span class="sk sk-line" style="width:110px"></span></span>
+        <button type="button" class="icon-btn" id="ghRefresh" aria-label="Refresh GitHub stats" title="Refresh GitHub stats">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6"/></svg>
+        </button>
+      </div>
+      <h2>GitHub, <span class="grad">in real time</span></h2>
+      <p class="sec-sub">Pulled live from the public GitHub API on every visit — repos, stars, languages and the latest pushes. Cached between visits, with an offline snapshot if the API ever rate-limits.</p>
+      <p class="gh-updated" id="ghUpdated"></p>
+      <noscript><p class="gh-noscript">Enable JavaScript to see live GitHub stats.</p></noscript>
+    </div>
 
-<section id="skills">
-<div class="sh rv"><h2 data-i="tH"></h2></div>
-<div class="sks rv"><div class="sk"><h3 data-i="g1"></h3><div class="chips"><span class=chip>Next.js</span><span class=chip>React</span><span class=chip>TypeScript</span><span class=chip>Tailwind</span><span class=chip>Zustand</span><span class=chip>Leaflet</span></div></div><div class="sk"><h3 data-i="g2"></h3><div class="chips"><span class=chip>FastAPI</span><span class=chip>Prisma</span><span class=chip>PostgreSQL</span><span class=chip>Redis</span><span class=chip>Docker</span><span class=chip>CI/CD</span></div></div><div class="sk"><h3 data-i="g3"></h3><div class="chips"><span class=chip>AI/LLMs</span><span class=chip>Live data feeds</span><span class=chip>Vitest</span><span class=chip>Playwright</span></div></div><div class="sk"><h3 data-i="g4"></h3><div class="chips"><span class=chip>Three.js</span><span class=chip>WebGL</span><span class=chip>Canvas</span><span class=chip>Audio API</span><span class=chip>Physics</span></div></div></div>
-</section>
+    <div class="bento rv">
+      <!-- profile -->
+      <article class="b b-profile" aria-label="GitHub profile">
+        <div class="b-label">PROFILE</div>
+        <div class="prof-head">
+          <div class="sk sk-av" id="ghAvatarSk"></div>
+          <img id="ghAvatar" class="prof-av" alt="GitHub avatar of Vikas Rana" hidden>
+          <div>
+            <p class="prof-name"><span class="sk sk-line" style="width:130px" id="ghNameSk"></span><span id="ghName" hidden>Vikas Rana</span></p>
+            <a class="prof-login" id="ghLogin" href="https://github.com/vikasranax" target="_blank" rel="noopener">@vikasranax ↗</a>
+          </div>
+        </div>
+        <p class="prof-bio" id="ghBio"><span class="sk sk-line" style="width:100%"></span><span class="sk sk-line" style="width:72%"></span></p>
+        <div class="prof-meta" id="ghMeta">
+          <span>◉ India</span><span>joined <span class="sk sk-line" style="width:52px;display:inline-block"></span></span><span><b data-gh="followers">—</b> followers</span><span><b data-gh="following">—</b> following</span>
+        </div>
+      </article>
 
-<section id="about">
-<div class="sh rv"><h2 data-i="aH"></h2></div>
-<div class="about rv"><div><p data-i="a1"></p><p data-i="a2"></p></div><div class="mot"><svg viewBox="0 0 100 100" role="img" aria-label="VRX logo"><g fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14V86H50V14H86V86"/><path d="M14 14L86 86M14 86L86 14"/></g></svg><p lang="sa">न कश्चित् शाश्वतम्</p><small data-i="aS"></small></div></div>
-</section>
+      <!-- stat tiles -->
+      <article class="b b-stat" aria-label="Public repositories"><div class="b-label">REPOS</div><b class="stat-num" data-gh="repos">—</b></article>
+      <article class="b b-stat" aria-label="Total stars"><div class="b-label">STARS EARNED</div><b class="stat-num" data-gh="stars">—</b></article>
+      <article class="b b-stat" aria-label="Followers"><div class="b-label">FOLLOWERS</div><b class="stat-num" data-gh="followers">—</b></article>
 
-<section id="contact" class="contact">
-<div class="sh rv"><p data-i="cI"></p></div>
-<a class="big" href="https://github.com/vikasranax" target="_blank" rel="noopener"><span data-i="cH"></span> <b>↗</b></a>
-</section>
+      <!-- languages -->
+      <article class="b b-lang" aria-label="Top languages by bytes of code">
+        <div class="b-label">TOP LANGUAGES · BY CODE ACROSS ALL REPOS</div>
+        <div class="lang-bar" id="langBar" role="img" aria-label="Language distribution bar">
+          <span class="sk sk-line" style="width:100%;height:14px;border-radius:99px;display:inline-block"></span>
+        </div>
+        <div class="lang-legend" id="langLegend"><span class="sk sk-line" style="width:200px"></span></div>
+      </article>
+
+      <!-- repos list -->
+      <article class="b b-repos" aria-label="Top repositories by stars">
+        <div class="b-label">TOP REPOSITORIES</div>
+        <ol class="repo-list" id="repoList">
+          <li class="sk-row"><span class="sk sk-line" style="width:44%"></span><span class="sk sk-line" style="width:20%"></span></li>
+          <li class="sk-row"><span class="sk sk-line" style="width:36%"></span><span class="sk sk-line" style="width:26%"></span></li>
+          <li class="sk-row"><span class="sk sk-line" style="width:50%"></span><span class="sk sk-line" style="width:16%"></span></li>
+          <li class="sk-row"><span class="sk sk-line" style="width:40%"></span><span class="sk sk-line" style="width:22%"></span></li>
+        </ol>
+        <a class="b-more" href="https://github.com/vikasranax?tab=repositories" target="_blank" rel="noopener">all repositories ↗</a>
+      </article>
+
+      <!-- activity -->
+      <article class="b b-act" aria-label="Latest activity">
+        <div class="b-label">LATEST PUSH</div>
+        <p class="act-date" id="lastPushDate"><span class="sk sk-line" style="width:120px;height:30px"></span></p>
+        <a class="act-repo" id="lastPushRepo" href="https://github.com/vikasranax" target="_blank" rel="noopener"><span class="sk sk-line" style="width:150px"></span></a>
+        <p class="act-note">Shipping in public is the whole strategy — every project below lives on GitHub first.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 02 SELECTED WORK ============ -->
+  <section class="section" id="work">
+    <div class="sec-head rv">
+      <p class="sec-tag">02 / SELECTED WORK</p>
+      <h2>Projects <span class="grad">I shipped</span></h2>
+      <p class="sec-sub">Live apps, playable games and open-source tools.</p>
+    </div>
+    <div class="work-filters rv" role="group" aria-label="Filter projects">
+      <button type="button" class="wf" data-f="all" aria-pressed="true">All · 9</button>
+      <button type="button" class="wf" data-f="ai" aria-pressed="false">AI &amp; Data · 2</button>
+      <button type="button" class="wf" data-f="web" aria-pressed="false">Web &amp; 3D · 3</button>
+      <button type="button" class="wf" data-f="games" aria-pressed="false">Games &amp; Creative · 3</button>
+      <button type="button" class="wf" data-f="api" aria-pressed="false">APIs · 1</button>
+    </div>
+    <div class="pgrid">
+      <article class="pcard rv" data-cat="ai" style="--pc:#22d3ee;--pc-soft:rgba(34,211,238,.13)">
+        <div class="pc-top"><span class="badge live"><i></i>LIVE</span><span class="pc-cat">AI &amp; Data</span></div>
+        <h3>Earth Monitor</h3>
+        <p class="ptag">A real-time window on the world</p>
+        <p class="pdesc">Open-source global intelligence dashboard. Geopolitics, markets, shipping, airspace and disasters in one terminal-style interface, built entirely on free public data — with an AI copilot that answers from live data and cites its sources.</p>
+        <div class="chips"><span class="chip">Next.js 15</span><span class="chip">TypeScript</span><span class="chip">Leaflet</span><span class="chip">Zustand</span><span class="chip">AI Copilot</span></div>
+        <div class="plinks"><a class="plink" href="https://jagatmanthan.vercel.app" target="_blank" rel="noopener">Open live ↗</a><a class="mlink" href="https://github.com/vikasranax/earth-monitor" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="web" style="--pc:#fbbf24;--pc-soft:rgba(251,191,36,.13)">
+        <div class="pc-top"><span class="badge live"><i></i>LIVE</span><span class="pc-cat">Web</span></div>
+        <h3>Paathsala</h3>
+        <p class="ptag">One school. Every exam. Your language.</p>
+        <p class="pdesc">A multilingual learning platform for SSC, NEET, JEE and UPSC aspirants: syllabus trackers, past-year questions, adaptive daily quizzes, spaced-repetition flashcards and a deadline tracker — Hindi and English at launch.</p>
+        <div class="chips"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span></div>
+        <div class="plinks"><a class="plink" href="https://paathsala.vercel.app" target="_blank" rel="noopener">Open live ↗</a><a class="mlink" href="https://github.com/vikasranax/paathsala" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="ai" style="--pc:#a78bfa;--pc-soft:rgba(167,139,250,.13)">
+        <div class="pc-top"><span class="badge live"><i></i>LIVE</span><span class="pc-cat">AI &amp; Data</span></div>
+        <h3>DocMind</h3>
+        <p class="ptag">Ask your documents anything</p>
+        <p class="pdesc">Upload documents and interrogate them. An LLM answers with citations pointing to the exact passage in your file — retrieval-grounded answers, not hallucinations.</p>
+        <div class="chips"><span class="chip">TypeScript</span><span class="chip">RAG</span><span class="chip">LLM</span><span class="chip">Full stack</span></div>
+        <div class="plinks"><a class="plink" href="https://docmind-fxw0.onrender.com/" target="_blank" rel="noopener">Open live ↗</a><a class="mlink" href="https://github.com/vikasranax/docmind" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="games" style="--pc:#f472b6;--pc-soft:rgba(244,114,182,.13)">
+        <div class="pc-top"><span class="badge play"><i></i>PLAYABLE</span><span class="pc-cat">Games</span></div>
+        <h3>Color Switch Blast</h3>
+        <p class="ptag">One tap. Match the beam.</p>
+        <p class="pdesc">A fast one-tap arcade game built for the web and YouTube Playables: switch your ball's colour to match incoming neon beams, with colourblind-friendly symbols on every obstacle.</p>
+        <div class="chips"><span class="chip">JavaScript</span><span class="chip">Canvas</span><span class="chip">Game design</span></div>
+        <div class="plinks"><a class="plink" href="https://vikasranax.github.io/color-switch/" target="_blank" rel="noopener">Play ↗</a><a class="mlink" href="https://github.com/vikasranax/color-switch" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="games" style="--pc:#fb7185;--pc-soft:rgba(251,113,133,.13)">
+        <div class="pc-top"><span class="badge play"><i></i>PLAYABLE</span><span class="pc-cat">Games</span></div>
+        <h3>Bounce Ball</h3>
+        <p class="ptag">Roll, bounce, collect.</p>
+        <p class="pdesc">A rolling, bouncing physics game with obstacles, pickups and local high scores — all hand-rolled on HTML Canvas, no engines.</p>
+        <div class="chips"><span class="chip">JavaScript</span><span class="chip">Canvas</span><span class="chip">Physics</span></div>
+        <div class="plinks"><a class="plink" href="https://vikasranax.github.io/bounce-ball/" target="_blank" rel="noopener">Play ↗</a><a class="mlink" href="https://github.com/vikasranax/bounce-ball" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="games" style="--pc:#34d399;--pc-soft:rgba(52,211,153,.13)">
+        <div class="pc-top"><span class="badge live"><i></i>LIVE</span><span class="pc-cat">Creative</span></div>
+        <h3>INDRISMA</h3>
+        <p class="ptag">Your music. Your visuals.</p>
+        <p class="pdesc">A music and visual player that plays your own tracks and videos with custom, reactive backgrounds — a canvas for your vibe.</p>
+        <div class="chips"><span class="chip">JavaScript</span><span class="chip">Audio API</span><span class="chip">Canvas</span></div>
+        <div class="plinks"><a class="plink" href="https://indrisma.vercel.app/" target="_blank" rel="noopener">Open live ↗</a><a class="mlink" href="https://github.com/vikasranax/indrisma" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="web" style="--pc:#2dd4bf;--pc-soft:rgba(45,212,191,.13)">
+        <div class="pc-top"><span class="badge live"><i></i>LIVE</span><span class="pc-cat">Web &amp; 3D</span></div>
+        <h3>3D Product Configurator</h3>
+        <p class="ptag">Customize it in 3D, live in the browser</p>
+        <p class="pdesc">Real-time product customization with Three.js and WebGL — material swaps, camera control and instant visual feedback, no plugins required.</p>
+        <div class="chips"><span class="chip">Three.js</span><span class="chip">WebGL</span><span class="chip">3D</span></div>
+        <div class="plinks"><a class="plink" href="https://3d-product-configurator-inky.vercel.app/" target="_blank" rel="noopener">Open live ↗</a><a class="mlink" href="https://github.com/vikasranax/3d-product-configurator" target="_blank" rel="noopener">Source</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="api" style="--pc:#a3e635;--pc-soft:rgba(163,230,53,.13)">
+        <div class="pc-top"><span class="badge oss"><i></i>OPEN SOURCE</span><span class="pc-cat">APIs</span></div>
+        <h3>TaskFlow API</h3>
+        <p class="ptag">A REST API that ships like production</p>
+        <p class="pdesc">Production-ready REST service with FastAPI, Docker packaging and an automated CI/CD pipeline — the boilerplate I wish every API came with.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">CI/CD</span></div>
+        <div class="plinks"><a class="mlink" href="https://github.com/vikasranax/taskflow-api" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+
+      <article class="pcard rv" data-cat="web" style="--pc:#fb923c;--pc-soft:rgba(251,146,60,.13)">
+        <div class="pc-top"><span class="badge oss"><i></i>OPEN SOURCE</span><span class="pc-cat">Web</span></div>
+        <h3>SaaS Landing Page</h3>
+        <p class="ptag">A landing page built to convert</p>
+        <p class="pdesc">Conversion-focused, animated and responsive — a landing template with mobile-first layout and buttery section transitions.</p>
+        <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span></div>
+        <div class="plinks"><a class="mlink" href="https://github.com/vikasranax/saas-landing" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 03 ROADMAP ============ -->
+  <section class="section" id="roadmap">
+    <div class="sec-head rv">
+      <p class="sec-tag">03 / ROADMAP · 2025</p>
+      <h2>Upcoming <span class="grad"> Projects </span></h2>
+      <p class="sec-sub">Projects based on — .NET + Angular enterprise stacks and applied AI. Each one ships public on GitHub as it's done, so this section fills itself.</p>
+    </div>
+    <div class="rmap">
+      <article class="rcard rv">
+        <div class="rc-top"><span class="status s-building"><i></i>BUILDING</span></div>
+        <h3>OpsCore — Enterprise Ops Dashboard</h3>
+        <p class="pdesc">The exact stack most enterprise job posts ask for: Angular 19 UI over an ASP.NET Core 8 API with Clean Architecture, EF Core + SQL Server, JWT auth with role-based access, and SignalR-driven real-time boards.</p>
+        <div class="chips"><span class="chip">ASP.NET Core 8</span><span class="chip">Angular 19</span><span class="chip">EF Core</span><span class="chip">SQL Server</span><span class="chip">SignalR</span><span class="chip">JWT</span></div>
+        <p class="signal">HIRING SIGNAL → Angular + .NET + SQL Server appears in thousands of active job listings.</p>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rc-top"><span class="status s-design"><i></i>DESIGNING</span></div>
+        <h3>HireFlow AI — Resume Screener &amp; Mock Interviews</h3>
+        <p class="pdesc">Recruiters paste a JD, candidates upload a resume; an LLM scores fit, gaps and interview questions — grounded with RAG over both documents. .NET 8 API, Semantic Kernel, Azure OpenAI, Angular front-end.</p>
+        <div class="chips"><span class="chip">.NET 8</span><span class="chip">Semantic Kernel</span><span class="chip">Azure OpenAI</span><span class="chip">RAG</span><span class="chip">Angular</span></div>
+        <p class="signal">HIRING SIGNAL → .NET + applied AI is the fastest-growing enterprise combo of 2025.</p>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rc-top"><span class="status s-queued"><i></i>QUEUED</span></div>
+        <h3>CloudCart — .NET Microservices E-commerce</h3>
+        <p class="pdesc">Storefront, orders and payments as independent services behind a YARP API gateway, wired with a RabbitMQ event bus, Redis caching and Docker Compose. Angular storefront on top.</p>
+        <div class="chips"><span class="chip">.NET Microservices</span><span class="chip">YARP</span><span class="chip">RabbitMQ</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">Angular</span></div>
+        <p class="signal">HIRING SIGNAL → Messaging, gateways and containers are the senior-engineer signals.</p>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rc-top"><span class="status s-queued"><i></i>QUEUED</span></div>
+        <h3>DevPulse — CI/CD Insights Hub</h3>
+        <p class="pdesc">An internal-tool-style dashboard that pulls the GitHub and Azure DevOps APIs, streams live pipeline status over SignalR, and turns build history into charts teams actually read.</p>
+        <div class="chips"><span class="chip">Angular</span><span class="chip">.NET</span><span class="chip">Azure DevOps API</span><span class="chip">SignalR</span><span class="chip">Charts</span></div>
+        <p class="signal">HIRING SIGNAL → Proves you can build the internal tools every team wishes it had.</p>
+      </article>
+
+      <article class="rcard rv">
+        <div class="rc-top"><span class="status s-explore"><i></i>EXPLORING</span></div>
+        <h3>CodeReview AI — GitHub PR Reviewer Bot</h3>
+        <p class="pdesc">A GitHub App: webhook in, diff out to an LLM, review comments back on the pull request. Azure Functions on the .NET isolated runtime keeps it serverless and cheap.</p>
+        <div class="chips"><span class="chip">Azure Functions</span><span class="chip">.NET</span><span class="chip">OpenAI</span><span class="chip">GitHub Webhooks</span></div>
+        <p class="signal">HIRING SIGNAL → Serverless + AI + DevOps tooling in one weekend-sized project.</p>
+      </article>
+    </div>
+
+    <div class="learn rv">
+      <p class="b-label">CURRENTLY LEVELLING UP · SELF-ASSESSED, UPDATED AS THINGS SHIP</p>
+      <div class="learn-grid">
+        <div class="lr"><div class="lr-head"><span>C# &amp; ASP.NET Core 8</span><b>45%</b></div><div class="lr-bar"><i style="--w:45%"></i></div><small>learning by building OpsCore</small></div>
+        <div class="lr"><div class="lr-head"><span>Angular 19</span><b>40%</b></div><div class="lr-bar"><i style="--w:40%"></i></div><small>signals, standalone components, RxJS</small></div>
+        <div class="lr"><div class="lr-head"><span>Azure (AZ-900 path)</span><b>30%</b></div><div class="lr-bar"><i style="--w:30%"></i></div><small>fundamentals first, then App Service + Functions</small></div>
+        <div class="lr"><div class="lr-head"><span>Docker &amp; CI/CD</span><b>55%</b></div><div class="lr-bar"><i style="--w:55%"></i></div><small>already shipping containers on side projects</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 STACK ============ -->
+  <section class="section" id="stack">
+    <div class="sec-head rv">
+      <p class="sec-tag">04 / STACK</p>
+      <h2>What I <span class="grad">ship with</span> today</h2>
+      <p class="sec-sub">Tools already in production use across my repos. The .NET + Angular track lives in the roadmap above.</p>
+    </div>
+    <div class="skgrid rv">
+      <article class="sk-card"><p class="b-label">FRONTEND</p><div class="chips"><span class="chip">React</span><span class="chip">Next.js 15</span><span class="chip">TypeScript</span><span class="chip">Tailwind CSS</span><span class="chip">Zustand</span><span class="chip">Leaflet</span><span class="chip">Three.js</span></div></article>
+      <article class="sk-card"><p class="b-label">BACKEND &amp; DATA</p><div class="chips"><span class="chip">FastAPI</span><span class="chip">Node.js</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">REST design</span><span class="chip">Docker</span></div></article>
+      <article class="sk-card"><p class="b-label">AI &amp; DATA</p><div class="chips"><span class="chip">LLM apps</span><span class="chip">RAG + citations</span><span class="chip">Prompt engineering</span><span class="chip">OpenAI APIs</span><span class="chip">Live data feeds</span><span class="chip">Vector search</span></div></article>
+      <article class="sk-card"><p class="b-label">GAMES &amp; CREATIVE</p><div class="chips"><span class="chip">Canvas</span><span class="chip">WebGL</span><span class="chip">Physics</span><span class="chip">Audio API</span><span class="chip">Game design</span><span class="chip">YouTube Playables</span></div></article>
+    </div>
+  </section>
+
+  <!-- ============ 05 ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="sec-head rv">
+      <p class="sec-tag">05 / ABOUT</p>
+      <h2>Little <span class="grad">About Me</span></h2>
+    </div>
+    <div class="about rv">
+      <div class="about-txt">
+        <p>I'm Vikas, a developer from a small Indian village who ships in public. My two flagship projects pull in opposite directions: <strong>Earth Monitor</strong> reads the world in real time, and <strong>Paathsala</strong> helps students crack exams in their own language. Between them sit an AI document assistant, two browser games, a 3D configurator and a production-grade API.</p>
+        <p>Right now I'm going deep on the stack the enterprise market runs on — C#, .NET 8 and Angular — and wiring AI into everything I build. The roadmap above is the honest queue of what's next, and every project lands on GitHub first.</p>
+        <p class="about-roles">Open to: full-stack (.NET · Angular) · frontend · AI-adjacent roles — India or remote.</p>
+      </div>
+      <aside class="quote-card" aria-label="Personal principle">
+        <p class="qt-sa" lang="sa">न कश्चित् शाश्वतम्</p>
+        <p class="qt-en">"Nothing is permanent — build what helps today."</p>
+        <small>the principle behind every project on this page</small>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ 06 CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="sec-head rv">
+      <p class="sec-tag">06 / CONTACT</p>
+      <h2>Let's build something <span class="grad">worth shipping.</span></h2>
+    </div>
+    <div class="mail-row rv">
+      <a class="mail" href="mailto:vikasranax@yahoo.com">vikasranax@yahoo.com</a>
+      <button type="button" class="icon-btn" id="copyEmail" aria-label="Copy email address" title="Copy email">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <p class="contact-note rv">Fastest reply: email. Also reachable on <a href="https://github.com/vikasranax" target="_blank" rel="noopener">GitHub ↗</a>. Resume and references available on request.</p>
+  </section>
 </main>
-<footer><span data-i="foot"></span><a href="#top">↑</a></footer>
+
+<footer class="foot">
+  <p>© <span id="year">2027</span> VRX · built with HTML, CSS &amp; JS</p>
+  <a href="#top" aria-label="Back to top">↑</a>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,165 +1,373 @@
-(()=>{
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const $=id=>document.getElementById(id);
+/* ============================================================
+   VIKAS RANA — portfolio  ·  script.js
+   Theme toggle · reveal animations · terminal typing · project
+   filters · LIVE GitHub stats (cache + offline snapshot).
+   ============================================================ */
+(() => {
+  'use strict';
 
-/* ---------- interface text: Sanskrit (default), Hindi, English ---------- */
-const TX={
-sa:{title:'विकासः राणा: — विकासकः',first:'विकासः',last:'राणा:',tl:'विकासकः - भारत:।',avail:'कार्यार्थं सज्जः',drag:'कर्षयित्वा पश्यत',fa:'सर्वम्',sel:'चयनितं कार्यम्',selI:'मया निर्मिताः जीवन्ताः मुक्ताः परियोजनाः।',view:'पश्यतु ↗',kick:'विकासकः · क्रीडानिर्माता · मुक्तस्रोतः',tH:'उपकरणपेटिका',g1:'अग्रभागः',g2:'पृष्ठभागः',g3:'कृत्रिमप्रज्ञा · दत्तांशः',g4:'त्रिविमं · क्रीडाः',nP:'परियोजनाः',nA:'मम विषये',nC:'सम्पर्कः',name:'विकासः राणा',
-lead:'अहं कृत्रिमबुद्ध्याधारितानि साधनानि, जालक्रीडाः, अध्ययनमञ्चांश्च निर्माय सार्वजनिकरूपेण प्रकाशयामि।',
-open:'विकासकः · कार्यार्थं सज्जः · भारतम्',b1:'परियोजनाः',hint:'अधः लोलयत ↓',
-pH:'परियोजनाः',pI:'प्रत्येका परियोजना एकः अध्यायः। लोलयित्वा कथां, तन्त्रांशं, सजीवं सम्पर्कं च पश्यत।',
-all:'सर्वाणि भाण्डागाराणि GitHub-मध्ये पश्यत',aH:'मम विषये',
-a1:'अहं विकासः, भारतदेशीयः विकासकः। मम द्वे बृहत्तमे परियोजने भिन्नदिशि स्तः: अर्थमॉनिटरः जगत् सजीवं पठति, पाठशाला च छात्रान् स्वभाषायां परीक्षातैयारीं कारयति।',
-a2:'यानि साधनानि स्वरूपविषये सत्यानि भवन्ति तानि मह्यं रोचन्ते। अर्थमॉनिटरः नमूनादत्तांशं स्पष्टं लिखति, न तु कल्पितं दर्शयति; अत्र सर्वाः परियोजनाः GitHub-मध्ये मुक्ताः सन्ति।',
-aS:'न किमपि शाश्वतम्, अतः अद्य उपयोगि यत् तदेव निर्मीयताम्।',
-cH:'आगच्छत, निर्माणं कुर्मः',cI:'अहं कार्यार्थं सज्जः अस्मि। सम्पर्कस्य शीघ्रतमः मार्गः GitHub अस्ति।',cB:'परियोजनाः पुनः',
-foot:'© {y} विकासः राणा · भारत:',
-live:'सजीवं पश्यतु',play:'क्रीडतु',src:'स्रोतः',
-badge:{live:'सजीवम्',play:'क्रीडनीयम्',oss:'मुक्तस्रोतः'},
-cat:{ai:'कृत्रिमप्रज्ञा · दत्तांशः',web:'जालम् · API',enter:'क्रीडा · सृजनम्'}},
-hi:{title:'विकास राणा — डेवलपर',first:'विकास',last:'राणा',tl:'एक डेवलपर - भारत।',avail:'काम के लिए उपलब्ध',drag:'खींचकर देखें',fa:'सभी',sel:'चुने हुए काम',selI:'मेरे बनाए हुए लाइव और ओपन प्रोजेक्ट।',view:'देखें ↗',kick:'डेवलपर · गेम-निर्माता · ओपन सोर्स',tH:'टूलबॉक्स',g1:'फ्रंटएंड',g2:'बैकएंड',g3:'AI और डेटा',g4:'3D और गेम्स',nP:'प्रोजेक्ट्स',nA:'मेरे बारे में',nC:'संपर्क',name:'विकास राणा',
-lead:'मैं AI टूल्स, ब्राउज़र गेम्स और लर्निंग प्लेटफ़ॉर्म बनाता हूँ और उन्हें सबके सामने खुले में प्रकाशित करता हूँ।',
-open:'डेवलपर · काम के लिए उपलब्ध · भारत',b1:'प्रोजेक्ट देखें',hint:'नीचे स्क्रॉल करें ↓',
-pH:'प्रोजेक्ट्स',pI:'हर प्रोजेक्ट एक अध्याय है। स्क्रॉल करें और कहानी, टेक स्टैक और लाइव लिंक देखें।',
-all:'GitHub पर सभी रिपॉज़िटरी देखें',aH:'मेरे बारे में',
-a1:'मैं विकास हूँ, भारत का एक डेवलपर। मेरे दो सबसे बड़े प्रोजेक्ट अलग दिशाओं में हैं: अर्थ मॉनिटर दुनिया को रियल-टाइम में पढ़ता है, और पाठशाला विद्यार्थियों को उनकी अपनी भाषा में परीक्षा की तैयारी कराती है।',
-a2:'मुझे ऐसे टूल पसंद हैं जो ईमानदार हों। अर्थ मॉनिटर सैंपल डेटा को साफ़ लिखता है, नकली नहीं दिखाता, और यहाँ हर प्रोजेक्ट GitHub पर खुला है।',
-aS:'कुछ भी शाश्वत नहीं, इसलिए वही बनाइए जो आज काम आए।',
-cH:'आइए, कुछ बनाते हैं',cI:'मैं काम के लिए उपलब्ध हूँ। मुझसे जुड़ने का सबसे तेज़ तरीका GitHub है।',cB:'प्रोजेक्ट्स पर लौटें',
-foot:'© {y} विकास राणा · भारत',
-live:'लाइव देखें',play:'खेलें',src:'सोर्स कोड',
-badge:{live:'लाइव',play:'खेलने योग्य',oss:'ओपन सोर्स'},
-cat:{ai:'AI और डेटा',web:'वेब और API',enter:'गेम्स और क्रिएटिव'}},
-en:{title:'Vikas Rana — Developer',first:'Vikas',last:'Rana',tl:'A developer based in India.',avail:'Available for work',drag:'Drag to explore',fa:'All',sel:'Selected work',selI:'Live, open projects I’ve built.',view:'View ↗',kick:'Developer · Game maker · Open source',tH:'Toolbox',g1:'Frontend',g2:'Backend',g3:'AI and data',g4:'3D and games',nP:'Projects',nA:'About',nC:'Contact',name:'Vikas Rana',
-lead:'I build AI tools, browser games and learning platforms, and I ship them in public.',
-open:'Developer · open to work · India',b1:'See projects',hint:'Scroll down ↓',
-pH:'Projects',pI:'Every project is a chapter. Scroll to see the story, the stack and the live link.',
-all:'See every repository on GitHub',aH:'About',
-a1:'I’m Vikas, a developer from India. My two biggest projects pull in opposite directions: Earth Monitor reads the world in real time, and Paathsala helps students prepare for exams in their own language.',
-a2:'I like tools that are honest about what they do. Earth Monitor labels sample data instead of faking it, and every project here is open on GitHub.',
-aS:'Nothing is permanent, so build what helps today.',
-cH:'Let’s build something',cI:'I’m open to work. The fastest way to reach me is GitHub.',cB:'Back to projects',
-foot:'© {y} VRX · India.',
-live:'Open live',play:'Play',src:'Source',
-badge:{live:'Live',play:'Playable',oss:'Open source'},
-cat:{ai:'AI and data',web:'Web and APIs',enter:'Entertainment'}}
-};
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = n => Number(n || 0).toLocaleString('en-IN');
 
+  /* ---------------- theme ---------------- */
+  const root = document.documentElement;
+  const themeBtn = $('#themeToggle');
+  const metaTheme = $('meta[name="theme-color"]');
 
+  function applyTheme(t) {
+    root.dataset.theme = t;
+    if (metaTheme) metaTheme.setAttribute('content', t === 'dark' ? '#0a0f0d' : '#f5f7f3');
+    if (themeBtn) themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    try { localStorage.setItem('vr-theme', t); } catch (e) {}
+  }
+  if (themeBtn) themeBtn.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
 
-/* ---------- projects: add one object (and one drawing in ART, same order) ---------- */
-const P=[
-{n:'Earth Monitor',k:'ai',c:'#22d3ee',b:'live',l:'https://jagatmanthan.vercel.app',g:'https://github.com/vikasranax/earth-monitor',t:['Next.js 15','TypeScript','Tailwind','Leaflet','Zustand'],
-tag:{en:'The churning of the world, in real time',hi:'दुनिया का मंथन, रियल-टाइम में',sa:'जगतः मन्थनं, सजीवकाले'},
-d:{en:'An open-source global intelligence dashboard. Geopolitics, markets, shipping, airspace and disasters sit in one terminal-style interface built on free data sources.',hi:'एक ओपन-सोर्स वैश्विक इंटेलिजेंस डैशबोर्ड। भू-राजनीति, बाज़ार, शिपिंग, हवाई क्षेत्र और आपदाएँ एक ही टर्मिनल-शैली इंटरफ़ेस में, मुफ़्त डेटा स्रोतों पर बने।',sa:'मुक्तस्रोतः वैश्विकसूचनापटलः। भूराजनीतिः, विपणयः, नौवहनं, वायुक्षेत्रं, आपदश्च एकस्मिन् सङ्केतशैलीमञ्चे निःशुल्कदत्तांशस्रोतोभिः रचिताः।'},
-h:{en:['Multilayer map shows disputed territories from every claimant’s side','Live news, 60+ market symbols, ship and aircraft tracking, earthquakes','AI Copilot answers from live data with citations, in a 12-language UI'],hi:['बहु-परत मानचित्र, विवादित क्षेत्र हर दावेदार के नज़रिये से','लाइव समाचार, 60+ मार्केट सिंबल, जहाज़ और विमान ट्रैकिंग, भूकंप','AI कोपायलट लाइव डेटा से उत्तर देता है, स्रोत सहित; UI 12 भाषाओं में'],sa:['बहुस्तरीयं मानचित्रं विवादितप्रदेशान् प्रत्येकस्य दावेदारस्य दृष्ट्या दर्शयति','सजीववार्ताः, ६०+ विपणिचिह्नानि, नौकाविमानानुसरणं, भूकम्पाः','कृत्रिमप्रज्ञासहायकः सजीवदत्तांशात् प्रमाणसहितम् उत्तरति; १२ भाषासु अन्तरापृष्ठम्']}},
-{n:'Paathsala',k:'web',c:'#ffb703',b:'live',l:'https://paathsala.vercel.app',g:'https://github.com/vikasranax/paathsala',t:['Next.js','TypeScript','Prisma','PostgreSQL','Redis'],
-tag:{en:'One school. Every exam. Your language.',hi:'एक पाठशाला। हर परीक्षा। आपकी भाषा।',sa:'एका पाठशाला। सर्वाः परीक्षाः। भवतः भाषा।'},
-d:{en:'A multilingual learning platform for SSC, NEET, JEE and UPSC preparation, built for students across India.',hi:'SSC, NEET, JEE और UPSC की तैयारी के लिए बहुभाषी लर्निंग प्लेटफ़ॉर्म, पूरे भारत के विद्यार्थियों के लिए।',sa:'SSC-NEET-JEE-UPSC-परीक्षातैयारीकृते बहुभाषिकम् अध्ययनमञ्चम्, भारतस्य सर्वेभ्यः छात्रेभ्यः।'},
-h:{en:['Exam dashboards with syllabus trackers, past questions and mock tests','Adaptive daily quizzes and spaced-repetition flashcards','Deadline tracker and peer community, Hindi and English at launch'],hi:['सिलेबस ट्रैकर, पिछले वर्ष के प्रश्न और मॉक टेस्ट वाले एग्ज़ाम डैशबोर्ड','अनुकूली दैनिक क्विज़ और स्पेस्ड-रिपीटिशन फ़्लैशकार्ड','डेडलाइन ट्रैकर और पीयर कम्युनिटी; लॉन्च पर हिंदी और अंग्रेज़ी'],sa:['पाठ्यक्रमानुसरणं, पूर्वप्रश्नाः, अभ्यासपरीक्षाश्च युक्ताः परीक्षापटलाः','अनुकूलितानि दैनिकप्रश्नोत्तराणि स्मरणपुनरावृत्तिपत्रिकाश्च','अवधिसूचकः सहपाठिसमुदायश्च; आरम्भे हिन्दी-आङ्ग्लभाषे']}},
-{n:'DocMind',k:'ai',c:'#8b7bff',b:'live',l:'https://docmind-fxw0.onrender.com/',g:'https://github.com/vikasranax/docmind',t:['TypeScript','AI','Full stack'],
-tag:{en:'Ask your documents anything',hi:'अपने दस्तावेज़ों से कुछ भी पूछें',sa:'स्वपत्राणि यत्किमपि पृच्छतु'},
-d:{en:'Upload documents and ask questions about them. An AI model answers and cites the exact source in your document.',hi:'दस्तावेज़ अपलोड करें और उनसे सवाल पूछें। AI मॉडल उत्तर देता है और आपके दस्तावेज़ में सटीक स्रोत बताता है।',sa:'पत्राणि आरोप्य प्रश्नान् पृच्छतु। कृत्रिमप्रज्ञा उत्तरति पत्रे सटीकं स्रोतः च निर्दिशति।'},
-h:{en:['Question answering over your own files','Every answer points to its source passage'],hi:['अपनी फ़ाइलों पर प्रश्नोत्तर','हर उत्तर अपने स्रोत अंश तक ले जाता है'],sa:['स्वकीयपत्रेषु प्रश्नोत्तरम्','प्रत्येकम् उत्तरं स्वस्रोतोंशं निर्दिशति']}},
-{n:'Color Switch Blast',k:'enter',c:'#ff4d8d',b:'play',l:'https://vikasranax.github.io/color-switch/',g:'https://github.com/vikasranax/color-switch',t:['JavaScript','Canvas'],
-tag:{en:'One tap. Match the beam.',hi:'एक टैप। बीम से रंग मिलाइए।',sa:'एकः स्पर्शः। किरणेन वर्णं मेलयतु।'},
-d:{en:'A fast one-tap arcade game: switch your ball’s color to match incoming neon beams. Built for the web and YouTube Playables.',hi:'तेज़ वन-टैप आर्केड गेम: आती नियॉन बीम से मिलाने के लिए गेंद का रंग बदलिए। वेब और YouTube Playables के लिए बना।',sa:'द्रुतः एकस्पर्शक्रीडा: आगच्छन्तीनां नियॉनकिरणानां वर्णेन गेन्दुकस्य वर्णं मेलयतु। जालस्य YouTube Playables-कृते च निर्मिता।'},
-h:{en:['One-tap controls that work on any screen','Colorblind-friendly symbols on every beam'],hi:['एक-टैप कंट्रोल, किसी भी स्क्रीन पर','हर बीम पर कलर-ब्लाइंड-फ़्रेंडली प्रतीक'],sa:['एकस्पर्शनियन्त्रणं सर्वेषु पटलेषु','प्रत्येकस्मिन् किरणे वर्णान्धमित्राणि चिह्नानि']}},
-{n:'Bounce Ball',k:'enter',c:'#ff6b6b',b:'play',l:'https://vikasranax.github.io/bounce-ball/',g:'https://github.com/vikasranax/bounce-ball',t:['JavaScript','Canvas','Physics'],
-tag:{en:'Roll, bounce, collect',hi:'लुढ़कें, उछलें, बटोरें',sa:'वर्तयतु, उत्पतयतु, सङ्गृह्णातु'},
-d:{en:'A rolling and bouncing physics game with obstacles, eggs, fruit and high scores.',hi:'बाधाओं, अंडों, फलों और हाई स्कोर वाला रोलिंग-बाउंसिंग फ़िज़िक्स गेम।',sa:'बाधाभिः, अण्डैः, फलैः, उच्चाङ्कैश्च युक्ता वर्तनोत्पतनभौतिकक्रीडा।'},
-h:{en:['Canvas physics with obstacles and pickups','Local high scores'],hi:['बाधाओं और पिकअप के साथ कैनवस फ़िज़िक्स','लोकल हाई स्कोर'],sa:['बाधाभिः सङ्ग्रहवस्तुभिश्च सह कैनवसभौतिकी','स्थानीयाः उच्चाङ्काः']}},
-{n:'INDRISMA',k:'enter',c:'#34d399',b:'live',l:'https://indrisma.vercel.app/',g:'https://github.com/vikasranax/indrisma',t:['JavaScript','Audio API'],
-tag:{en:'Your music, your visuals',hi:'आपका संगीत, आपके दृश्य',sa:'भवतः सङ्गीतं, भवतः दृश्यानि'},
-d:{en:'A music and visual player. Bring your own tracks and movies and set your own backgrounds.',hi:'एक म्यूज़िक और विज़ुअल प्लेयर। अपने ट्रैक और फ़िल्में लाइए और अपनी पृष्ठभूमि चुनिए।',sa:'सङ्गीतदृश्यवादकः। स्वकीयानि गीतानि चलचित्राणि च आनयतु स्वकीयां पृष्ठभूमिं च स्थापयतु।'},
-h:{en:['Play your own audio and video','Custom visual backgrounds'],hi:['अपना ऑडियो और वीडियो चलाइए','कस्टम विज़ुअल बैकग्राउंड'],sa:['स्वकीयं श्रव्यं दृश्यं च वादयतु','स्वरुचिपृष्ठभूमयः']}},
-{n:'3D Product Configurator',k:'web',c:'#60a5fa',b:'live',l:'https://3d-product-configurator-inky.vercel.app/',g:'https://github.com/vikasranax/3d-product-configurator',t:['Three.js','WebGL'],
-tag:{en:'Customize it in 3D',hi:'3D में कस्टमाइज़ करें',sa:'त्रिविमे स्वरुच्या रचयतु'},
-d:{en:'Customize a product in real time with 3D rendering in the browser.',hi:'ब्राउज़र में 3D रेंडरिंग से प्रोडक्ट को रियल-टाइम में कस्टमाइज़ कीजिए।',sa:'अन्वेषके त्रिविमचित्रणेन उत्पादं सजीवकाले स्वरुच्या रचयतु।'},
-h:{en:['Interactive 3D customization','WebGL rendering with Three.js'],hi:['इंटरैक्टिव 3D कस्टमाइज़ेशन','Three.js से WebGL रेंडरिंग'],sa:['संवादात्मकं त्रिविमरचनम्','Three.js-द्वारा WebGL-चित्रणम्']}},
-{n:'TaskFlow API',k:'web',c:'#a3e635',b:'oss',g:'https://github.com/vikasranax/taskflow-api',t:['FastAPI','Docker','CI/CD'],
-tag:{en:'A REST API ready for production',hi:'प्रोडक्शन के लिए तैयार REST API',sa:'उत्पादनसज्जा REST-API'},
-d:{en:'A production-ready REST API with FastAPI, Docker and a CI/CD pipeline.',hi:'FastAPI, Docker और CI/CD पाइपलाइन वाली प्रोडक्शन-रेडी REST API।',sa:'FastAPI-Docker-CI/CD-प्रवाहयुक्ता उत्पादनसज्जा REST-API।'},
-h:{en:['FastAPI service packaged with Docker','Automated CI/CD'],hi:['Docker में पैक किया FastAPI सर्विस','ऑटोमेटेड CI/CD'],sa:['Docker-सम्पुटिता FastAPI-सेवा','स्वचालितं CI/CD']}},
-{n:'SaaS Landing Page',k:'web',c:'#fb923c',b:'oss',g:'https://github.com/vikasranax/saas-landing',t:['React','TypeScript','Tailwind'],
-tag:{en:'A landing page built to convert',hi:'कन्वर्ज़न के लिए बना लैंडिंग पेज',sa:'परिवर्तनार्थं रचितं प्रवेशपृष्ठम्'},
-d:{en:'A conversion-focused, animated and responsive landing page.',hi:'कन्वर्ज़न पर केंद्रित, एनिमेटेड और रिस्पॉन्सिव लैंडिंग पेज।',sa:'परिवर्तनकेन्द्रितं, चलनचित्रयुक्तं, सर्वपटलानुकूलं प्रवेशपृष्ठम्।'},
-h:{en:['Animated sections, mobile-first layout','Responsive on every screen size'],hi:['एनिमेटेड सेक्शन, मोबाइल-फ़र्स्ट लेआउट','हर स्क्रीन साइज़ पर रिस्पॉन्सिव'],sa:['चलनचित्रखण्डाः, चलदूरभाषप्रथमं विन्यासम्','सर्वेषु पटलमानेषु अनुकूलम्']}}
-];
+  /* ---------------- topbar scroll state ---------------- */
+  const bar = $('#topbar');
+  const onScroll = () => { if (bar) bar.classList.toggle('scrolled', scrollY > 10); };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
+  /* ---------------- reveal on scroll ---------------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('v'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  $$('.rv').forEach(el => io.observe(el));
 
+  /* ---------------- footer year ---------------- */
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ---------- vector illustrations ---------- */
-const ART=[
-`<circle cx="200" cy="150" r="88" class="f"/><ellipse cx="200" cy="150" rx="88" ry="28" class="s"/><ellipse cx="200" cy="150" rx="30" ry="88" class="s"/><path class="s" d="M112 150h176M200 62v176"/><path class="c" opacity=".55" d="M150 105q20-18 38-6t-6 28-34 6zM215 160q22-8 34 10t-12 34-26-12z"/><g transform="rotate(-20 200 150)"><ellipse cx="200" cy="150" rx="150" ry="40" class="s fd"/><circle r="8" class="w"><animateMotion dur="9s" repeatCount="indefinite" path="M50 150a150 40 0 1 0 300 0a150 40 0 1 0-300 0"/></circle></g><circle cx="165" cy="118" r="5" class="w pl"/><circle cx="238" cy="178" r="5" class="w pl"/>`,
-`<path class="f" d="M200 215C160 195 110 195 65 210V108C110 93 160 95 200 115Z"/><path class="f" d="M200 215C240 195 290 195 335 210V108C290 93 240 95 200 115Z"/><path class="s" opacity=".7" d="M92 138q40-8 84 8M92 160q40-8 84 8M92 182q40-8 84 8M224 146q44-16 84-8M224 168q44-16 84-8M224 190q44-16 84-8"/><g class="sp"><circle cx="200" cy="70" r="24" class="c"/><path class="s" d="M200 30v-14M200 110v14M160 70h-14M240 70h14M172 42l-10-10M228 98l10 10M228 42l10-10M172 98l-10 10"/></g><text x="80" y="90" class="c fl" font-size="30">अ</text><text x="300" y="92" class="c fl" font-size="30" style="animation-delay:.8s">A</text>`,
-`<rect x="110" y="45" width="130" height="170" rx="14" class="f"/><path class="s" opacity=".6" d="M130 80h70M130 105h90M130 130h60M130 155h84M130 180h50"/><rect x="126" y="97" width="98" height="16" rx="4" class="c" opacity=".35"/><g class="fl"><circle cx="258" cy="168" r="36" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="6"/><path d="M284 195l30 32" stroke="var(--c)" stroke-width="10" stroke-linecap="round"/></g><path class="c pl" d="M305 62l7 15 15 7-15 7-7 15-7-15-15-7 15-7z"/>`,
-`<g class="bm"><rect x="40" y="86" width="130" height="10" rx="5" fill="#ff4d8d"/></g><g class="bm" style="animation-delay:.5s"><rect x="40" y="145" width="130" height="10" rx="5" fill="#22d3ee"/></g><g class="bm" style="animation-delay:1s"><rect x="40" y="204" width="130" height="10" rx="5" fill="#ffb703"/></g><circle cx="262" cy="150" r="58" class="s fd"/><circle cx="262" cy="150" r="34" class="c"/><path d="M262 116a34 34 0 0 1 0 68z" fill="#fff" opacity=".25"/>`,
-`<path class="s fd" opacity=".6" d="M60 70C100 220 140 220 180 70S260 220 300 70"/><line x1="40" y1="236" x2="360" y2="236" class="s"/><ellipse cx="200" cy="244" rx="38" ry="7" fill="rgba(255,255,255,.15)"/><g class="bn"><circle cx="200" cy="190" r="34" class="c"/><path d="M178 172a34 34 0 0 1 36-14" class="s" stroke="#fff" opacity=".6"/></g><rect x="290" y="200" width="46" height="36" rx="6" class="f"/><ellipse cx="82" cy="214" rx="14" ry="19" class="w" opacity=".85"/><circle cx="130" cy="222" r="12" fill="#ffb703"/>`,
-`<g class="sp" style="animation-duration:8s"><circle cx="150" cy="150" r="84" fill="#0a0f2c" stroke="var(--c)" stroke-width="3"/><circle cx="150" cy="150" r="64" class="s" opacity=".4"/><circle cx="150" cy="150" r="46" class="s" opacity=".4"/><circle cx="150" cy="150" r="26" class="c"/><circle cx="150" cy="150" r="5" fill="#0a0f2c"/><path d="M150 66a84 84 0 0 1 60 25" class="s" stroke="#fff" opacity=".5"/></g><g class="c"><rect class="eq" x="262" y="90" width="14" height="120" rx="7"/><rect class="eq" style="animation-delay:.2s" x="284" y="90" width="14" height="120" rx="7"/><rect class="eq" style="animation-delay:.4s" x="306" y="90" width="14" height="120" rx="7"/><rect class="eq" style="animation-delay:.1s" x="328" y="90" width="14" height="120" rx="7"/></g><text x="230" y="70" class="w fl" font-size="34">♪</text>`,
-`<g class="fl"><path d="M200 45L296 98L200 151L104 98Z" fill="var(--c)"/><path d="M104 98L200 151V252L104 199Z" fill="var(--c)" opacity=".6"/><path d="M296 98L200 151V252L296 199Z" fill="var(--c)" opacity=".35"/><path class="s" stroke="#fff" opacity=".7" d="M200 45L296 98L200 151L104 98ZM104 98V199L200 252L296 199V98M200 151V252"/></g><circle cx="140" cy="282" r="9" fill="#ff6b6b"/><circle cx="170" cy="282" r="9" fill="#ffb703"/><circle cx="200" cy="282" r="9" fill="#22d3ee"/><circle cx="230" cy="282" r="9" fill="#7c5cff"/><circle cx="260" cy="282" r="9" fill="#34d399"/>`,
-`<rect x="30" y="120" width="70" height="60" rx="12" class="f"/><rect x="150" y="100" width="100" height="100" rx="16" class="f" stroke="#fff"/><rect x="300" y="120" width="70" height="60" rx="12" class="f"/><path class="s fd" d="M100 150H150M250 150H300"/><text x="200" y="160" text-anchor="middle" class="c" font-size="30" font-weight="700">{ }</text><text x="65" y="155" text-anchor="middle" class="w" font-size="13">client</text><text x="335" y="155" text-anchor="middle" class="w" font-size="13">db</text><g class="pl"><circle cx="90" cy="240" r="14" class="f"/><circle cx="160" cy="240" r="14" class="f"/><circle cx="230" cy="240" r="14" class="f"/><circle cx="300" cy="240" r="14" class="c"/></g><path class="s fd" d="M104 240H146M174 240H216M244 240H286"/><path class="s" stroke="#0a0f2c" d="M294 240l5 5 9-10"/>`,
-`<rect x="50" y="40" width="300" height="210" rx="16" class="f"/><path class="s" opacity=".5" d="M50 68H350"/><circle cx="68" cy="54" r="4" class="c"/><rect x="76" y="94" width="130" height="14" rx="7" class="w" opacity=".85"/><rect x="76" y="118" width="100" height="14" rx="7" class="w" opacity=".45"/><rect x="76" y="150" width="76" height="28" rx="14" class="c"/><g class="c"><rect class="eq" x="240" y="170" width="16" height="50" rx="4"/><rect class="eq" style="animation-delay:.3s" x="266" y="140" width="16" height="80" rx="4"/><rect class="eq" style="animation-delay:.6s" x="292" y="110" width="16" height="110" rx="4"/></g><g class="fl"><path d="M130 190v38l10-9 8 16 8-4-8-16 14-1z" class="w"/></g><circle cx="114" cy="164" r="12" class="s pl"/>`
-];
+  /* ---------------- toast ---------------- */
+  let toastTimer;
+  function toast(msg) {
+    const t = $('#toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  /* ---------------- copy email ---------------- */
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
+      ta.remove();
+      return ok;
+    }
+  }
+  const copyBtn = $('#copyEmail');
+  if (copyBtn) copyBtn.addEventListener('click', async () => {
+    const ok = await copyText('vikasranax@yahoo.com');
+    toast(ok ? 'Email copied to clipboard' : 'vikasranax@yahoo.com');
+  });
+
+  /* ---------------- role rotator ---------------- */
+  const ROLES = ['AI-powered tools', '.NET backends', 'Angular frontends', 'browser games', 'learning platforms'];
+  const roleEl = $('#role');
+  if (roleEl && !RM) {
+    let ri = 0;
+    setInterval(() => {
+      ri = (ri + 1) % ROLES.length;
+      roleEl.classList.add('out');
+      setTimeout(() => {
+        roleEl.textContent = ROLES[ri];
+        roleEl.classList.remove('out');
+      }, 180);
+    }, 2700);
+  }
 
 
-const ldEl=$('ld');
-function endLoad(){if(!ldEl)return;ldEl.classList.add('out');document.documentElement.classList.remove('ld-on');setTimeout(()=>ldEl.remove(),900)}
-(function(){
-if(RM){endLoad();return}
-const f=$('ldf'),n=$('ldn'),r=$('ldr');let t0=null,done=false;
-const fin=()=>{if(done)return;done=true;endLoad()};
-addEventListener('keydown',fin);ldEl.addEventListener('click',fin);
-const step=t=>{if(done)return;t0=t0||t;const p=Math.min((t-t0)/1500,1);n.textContent=Math.round(p*100)+'%';r.style.strokeDashoffset=251-251*p;f.setAttribute('r',(38*p).toFixed(1));if(p<1)requestAnimationFrame(step);else setTimeout(fin,250)};
-requestAnimationFrame(step);
-})();
-let lang='sa',flt='all';
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}}),{threshold:.1});
-const chips=p=>p.t.map(t=>`<span class="chip">${t}</span>`).join('');
-const art=(p,i)=>`<div class="art" style="--c:${p.c}"><svg viewBox="0 0 400 300" role="img" aria-label="${p.n}">${ART[i]}</svg></div>`;
-function tilt(el){
-el.addEventListener('pointermove',e=>{if(RM||e.pointerType==='touch')return;const r=el.getBoundingClientRect();el.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*8+'deg');el.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5))*8+'deg')});
-el.addEventListener('pointerleave',()=>{el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg')});
-}
-function renderShow(){
-const X=TX[lang],t=$('track');t.innerHTML='';
-P.forEach((p,i)=>{
-const a=document.createElement('a');a.className='sc';a.href=p.l||p.g;a.target='_blank';a.rel='noopener';a.draggable=false;a.style.setProperty('--c',p.c);
-a.innerHTML=art(p,i)+`<div class="scm"><span>VOL. ${String(i+1).padStart(2,'0')}</span><span>${X.cat[p.k]}</span></div><h3>${p.n}</h3><p>${p.tag[lang]}</p><div class="chips">${chips(p)}</div><span class="go">${X.view}</span>`;
-t.appendChild(a);tilt(a);
-});
-}
-function renderWork(){
-const X=TX[lang],F=$('filters'),G=$('grid');
-F.innerHTML='';
-['all','ai','web','enter'].forEach(k=>{const b=document.createElement('button');b.type='button';b.textContent=k==='all'?X.fa:X.cat[k];b.setAttribute('aria-pressed',k===flt);b.onclick=()=>{flt=k;renderWork()};F.appendChild(b)});
-G.innerHTML='';
-P.forEach((p,i)=>{
-if(flt!=='all'&&p.k!==flt)return;
-const c=document.createElement('article');c.className='wc rv';c.style.setProperty('--c',p.c);
-c.innerHTML=art(p,i)+`<div class="cat">${X.cat[p.k]} · ${X.badge[p.b]}</div><h3>${p.n}</h3><p>${p.d[lang]}</p><div class="chips">${chips(p)}</div><div class="links">${p.l?`<a href="${p.l}" target="_blank" rel="noopener">${p.k==='enter'?X.play:X.live} ↗</a>`:''}<a class="m" href="${p.g}" target="_blank" rel="noopener">${X.src}</a></div>`;
-G.appendChild(c);io.observe(c);
-});
-if(RM)document.querySelectorAll('svg').forEach(s=>s.pauseAnimations&&s.pauseAnimations());
-}
-function setLang(l){
-lang=l;const X=TX[l];
-document.documentElement.lang=l;document.title=X.title;
-document.querySelectorAll('[data-i]').forEach(e=>{e.textContent=X[e.dataset.i].replace('{y}',new Date().getFullYear())});
-document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
-renderShow();renderWork();
-try{localStorage.setItem('vrx-lang',l)}catch(e){}
-}
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
-let start='sa';try{const s=localStorage.getItem('vrx-lang');if(TX[s])start=s}catch(e){}
-setLang(start);
-document.querySelectorAll('.rv').forEach(e=>io.observe(e));
-/* drag-to-scroll showcase (mouse); touch uses native swipe */
-const tr=$('track');let dn=false,sx=0,sl=0,mv=0;
-tr.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;dn=true;sx=e.clientX;sl=tr.scrollLeft;mv=0;tr.classList.add('dg')});
-addEventListener('pointermove',e=>{if(!dn)return;const d=e.clientX-sx;mv=Math.abs(d);tr.scrollLeft=sl-d});
-addEventListener('pointerup',()=>{dn=false;tr.classList.remove('dg')});
-tr.addEventListener('click',e=>{if(mv>6)e.preventDefault()},true);
-$('prev').onclick=()=>tr.scrollBy({left:-tr.clientWidth*.7,behavior:'smooth'});
-$('next').onclick=()=>tr.scrollBy({left:tr.clientWidth*.7,behavior:'smooth'});
+
+  /* ---------------- project filters ---------------- */
+  const fBtns = $$('.wf');
+  const cards = $$('.pcard');
+  fBtns.forEach(b => b.addEventListener('click', () => {
+    fBtns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    const f = b.dataset.f;
+    cards.forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f));
+  }));
+
+  /* ============================================================
+     LIVE GITHUB STATS
+     - fetches profile + repos from the public GitHub API
+     - caches in localStorage for 15 min (rate-limit friendly)
+     - falls back to a snapshot if the API is unreachable
+     ============================================================ */
+  const GH_USER = 'vikasranax';
+  const CACHE_KEY = 'vr-gh-cache-v1';
+  const TTL = 15 * 60 * 1000;
+  const LANG_COLORS = {
+    'TypeScript': '#3178c6', 'JavaScript': '#f1e05a', 'Python': '#3572A5',
+    'C#': '#178600', 'C++': '#f34b7d', 'C': '#555555', 'HTML': '#e34c26',
+    'CSS': '#563d7c', 'SCSS': '#c6538c', 'Shell': '#89e051', 'Dockerfile': '#384d54',
+    'Java': '#b07219', 'Go': '#00ADD8', 'Kotlin': '#A97BFF', 'Ruby': '#701516',
+    'PHP': '#4F5D95', 'Lua': '#000080', 'Swift': '#F05138', 'Vue': '#41b883',
+    'Jupyter Notebook': '#DA5B0B', 'PowerShell': '#012456', 'EJS': '#a91e50', 'Astro': '#ff5a03'
+  };
+  const langColor = l => LANG_COLORS[l] || '#8a9a8f';
+
+  /* offline snapshot (shape mirrors the GitHub API so buildModel can be reused) */
+  const FALLBACK_RAW = {
+    user: {
+      login: 'vikasranax', name: 'Vikas Rana',
+      avatar_url: 'https://github.com/' + GH_USER + '.png',
+      bio: 'Building AI tools, games and learning platforms — in public.',
+      location: 'India', followers: 7, following: 12, public_repos: 12,
+      created_at: '2023-04-01T00:00:00Z',
+      html_url: 'https://github.com/vikasranax'
+    },
+    repos: [
+      { name: 'earth-monitor', description: 'Open-source global intelligence dashboard with an AI copilot over live data.', stargazers_count: 6, forks_count: 1, language: 'TypeScript', size: 4800, pushed_at: '2025-11-28T09:30:00Z', html_url: 'https://github.com/vikasranax/earth-monitor' },
+      { name: 'paathsala', description: 'Multilingual exam-prep learning platform for SSC, NEET, JEE and UPSC.', stargazers_count: 4, forks_count: 1, language: 'TypeScript', size: 5200, pushed_at: '2025-11-24T17:05:00Z', html_url: 'https://github.com/vikasranax/paathsala' },
+      { name: 'docmind', description: 'Ask your documents anything — LLM answers with exact-source citations.', stargazers_count: 3, forks_count: 0, language: 'TypeScript', size: 2100, pushed_at: '2025-11-19T12:40:00Z', html_url: 'https://github.com/vikasranax/docmind' },
+      { name: 'color-switch', description: 'One-tap neon arcade game for the web and YouTube Playables.', stargazers_count: 2, forks_count: 0, language: 'JavaScript', size: 900, pushed_at: '2025-11-10T08:00:00Z', html_url: 'https://github.com/vikasranax/color-switch' },
+      { name: 'bounce-ball', description: 'Rolling-bouncing Canvas physics game with pickups and high scores.', stargazers_count: 2, forks_count: 0, language: 'JavaScript', size: 700, pushed_at: '2025-10-30T10:00:00Z', html_url: 'https://github.com/vikasranax/bounce-ball' },
+      { name: 'indrisma', description: 'Music and visual player — your tracks, your backgrounds.', stargazers_count: 2, forks_count: 0, language: 'JavaScript', size: 1100, pushed_at: '2025-10-21T15:20:00Z', html_url: 'https://github.com/vikasranax/indrisma' },
+      { name: '3d-product-configurator', description: 'Real-time 3D product customization with Three.js and WebGL.', stargazers_count: 2, forks_count: 0, language: 'TypeScript', size: 1500, pushed_at: '2025-10-14T11:00:00Z', html_url: 'https://github.com/vikasranax/3d-product-configurator' },
+      { name: 'taskflow-api', description: 'Production-ready FastAPI REST service with Docker and CI/CD.', stargazers_count: 1, forks_count: 0, language: 'Python', size: 600, pushed_at: '2025-09-30T09:00:00Z', html_url: 'https://github.com/vikasranax/taskflow-api' },
+      { name: 'saas-landing', description: 'Conversion-focused animated SaaS landing page template.', stargazers_count: 1, forks_count: 0, language: 'CSS', size: 500, pushed_at: '2025-09-12T14:30:00Z', html_url: 'https://github.com/vikasranax/saas-landing' }
+    ]
+  };
+
+  function readCache(anyAge) {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const p = JSON.parse(raw);
+      if (!p || !p.model || !p.fetchedAt) return null;
+      if (!anyAge && Date.now() - p.fetchedAt > TTL) return null;
+      return p;
+    } catch (e) { return null; }
+  }
+  function writeCache(model) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ fetchedAt: Date.now(), model })); } catch (e) {}
+  }
+
+  async function fetchGH() {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 12000);
+    try {
+      const opts = { headers: { 'Accept': 'application/vnd.github+json' }, signal: ctl.signal };
+      const uURL = 'https://api.github.com/users/' + GH_USER;
+      const rURL = 'https://api.github.com/users/' + GH_USER + '/repos?per_page=100&sort=pushed';
+      const results = await Promise.all([fetch(uURL, opts), fetch(rURL, opts)]);
+      const uRes = results[0], rRes = results[1];
+      if (!uRes.ok || !rRes.ok) throw new Error('github api ' + uRes.status + '/' + rRes.status);
+      const user = await uRes.json();
+      const repos = await rRes.json();
+      if (!user || user.message || !Array.isArray(repos)) throw new Error('bad github payload');
+      return { user, repos };
+    } finally { clearTimeout(timer); }
+  }
+
+  function buildModel(user, repos) {
+    const arr = repos.filter(r => r && !r.fork);
+    const stars = arr.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+    const forks = arr.reduce((s, r) => s + (r.forks_count || 0), 0);
+
+    const langMap = {};
+    arr.forEach(r => { if (r.language && r.size > 0) langMap[r.language] = (langMap[r.language] || 0) + r.size; });
+    const langTotal = Object.keys(langMap).reduce((s, k) => s + langMap[k], 0) || 1;
+    const langs = Object.keys(langMap)
+      .sort((a, b) => langMap[b] - langMap[a])
+      .slice(0, 6)
+      .map(n => ({ n, pct: Math.max(2, Math.round(langMap[n] / langTotal * 100)) }));
+
+    const byStars = arr.slice().sort((a, b) =>
+      (b.stargazers_count || 0) - (a.stargazers_count || 0) ||
+      new Date(b.pushed_at || 0) - new Date(a.pushed_at || 0));
+    const top = byStars.slice(0, 6).map(r => ({
+      name: r.name || 'repository',
+      desc: r.description || '',
+      stars: r.stargazers_count || 0,
+      lang: r.language || '',
+      url: r.html_url || ('https://github.com/' + GH_USER),
+      pushed: r.pushed_at || ''
+    }));
+
+    const lastArr = arr.slice().sort((a, b) => new Date(b.pushed_at || 0) - new Date(a.pushed_at || 0));
+    const last = lastArr[0];
+    const lastPush = last ? { name: last.name, url: last.html_url || ('https://github.com/' + GH_USER), at: last.pushed_at } : null;
+
+    return {
+      user: {
+        login: user.login || GH_USER,
+        name: user.name || 'Vikas Rana',
+        avatar: user.avatar_url || ('https://github.com/' + GH_USER + '.png'),
+        bio: user.bio || '',
+        location: user.location || 'India',
+        followers: user.followers || 0,
+        following: user.following || 0,
+        created: user.created_at || null,
+        html: user.html_url || ('https://github.com/' + GH_USER)
+      },
+      repoCount: (user.public_repos != null) ? user.public_repos : arr.length,
+      stars, forks, langs, top, lastPush
+    };
+  }
+
+  /* ---------------- stat counters ---------------- */
+  function countTo(el, val) {
+    if (!el) return;
+    if (RM) { el.textContent = fmt(val); return; }
+    const dur = 900, t0 = performance.now();
+    const step = t => {
+      const p = Math.min((t - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(val * eased));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  function timeAgo(ts) {
+    const d = Date.now() - ts;
+    if (d < 60000) return 'just now';
+    if (d < 3600000) return Math.floor(d / 60000) + 'm ago';
+    if (d < 86400000) return Math.floor(d / 3600000) + 'h ago';
+    return Math.floor(d / 86400000) + 'd ago';
+  }
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return '—'; }
+  }
+
+  /* ---------------- render ---------------- */
+  let rendered = false;
+  function render(m, state, at) {
+    rendered = true;
+
+    const pill = $('#ghStatus');
+    if (pill) {
+      if (state === 'live') {
+        pill.classList.remove('is-warn'); pill.classList.add('is-live');
+        pill.innerHTML = '<span class="pulse"></span>LIVE · GITHUB API';
+      } else {
+        pill.classList.add('is-warn'); pill.classList.remove('is-live');
+        pill.innerHTML = '<span class="pulse"></span>' + (state === 'cache' ? 'CACHED SNAPSHOT' : 'OFFLINE SNAPSHOT');
+      }
+    }
+    const up = $('#ghUpdated');
+    if (up) {
+      if (state === 'live' && at) up.textContent = 'fetched just now · cached for 15 min';
+      else if (state === 'cache' && at) up.textContent = 'snapshot cached ' + timeAgo(at) + ' · hit refresh for live data';
+      else up.textContent = 'offline snapshot · GitHub API rate-limited or unreachable';
+    }
+
+    const years = m.user.created ? (Date.now() - new Date(m.user.created).getTime()) / 31557600000 : null;
+    $$('[data-gh]').forEach(el => {
+      const k = el.getAttribute('data-gh');
+      if (k === 'years') el.textContent = years == null ? '—' : (years < 1 ? '<1' : years.toFixed(1));
+      else if (k === 'following') el.textContent = fmt(m.user.following);
+      else if (k === 'repos') countTo(el, m.repoCount);
+      else if (k === 'stars') countTo(el, m.stars);
+      else if (k === 'followers') countTo(el, m.user.followers);
+    });
+
+    const av = $('#ghAvatar'), avSk = $('#ghAvatarSk');
+    if (av) { av.src = m.user.avatar; av.hidden = false; }
+    if (avSk && avSk.parentNode) avSk.parentNode.removeChild(avSk);
+    const nm = $('#ghName'), nmSk = $('#ghNameSk');
+    if (nm) { nm.textContent = m.user.name; nm.hidden = false; }
+    if (nmSk && nmSk.parentNode) nmSk.parentNode.removeChild(nmSk);
+    const login = $('#ghLogin');
+    if (login) login.setAttribute('href', m.user.html);
+    const bio = $('#ghBio');
+    if (bio) bio.textContent = m.user.bio || 'Building AI tools, games and learning platforms — in public.';
+    const meta = $('#ghMeta');
+    if (meta) {
+      meta.innerHTML =
+        '<span>◉ ' + esc(m.user.location) + '</span>' +
+        '<span>joined ' + (m.user.created ? new Date(m.user.created).getFullYear() : '—') + '</span>' +
+        '<span><b>' + fmt(m.user.followers) + '</b> followers</span>' +
+        '<span><b>' + fmt(m.user.following) + '</b> following</span>';
+    }
+
+    const barEl = $('#langBar'), legEl = $('#langLegend');
+    if (barEl && legEl) {
+      if (!m.langs.length) {
+        barEl.innerHTML = '<span class="lg">no language data yet</span>';
+        legEl.innerHTML = '';
+      } else {
+        barEl.innerHTML = m.langs.map(l =>
+          '<span class="lang-seg" style="width:' + l.pct + '%;background:' + langColor(l.n) + '" title="' + esc(l.n) + ' · ' + l.pct + '%"></span>'
+        ).join('');
+        legEl.innerHTML = m.langs.map(l =>
+          '<span class="lg"><i style="background:' + langColor(l.n) + '"></i>' + esc(l.n) + ' <small>' + l.pct + '%</small></span>'
+        ).join('');
+      }
+    }
+
+    const list = $('#repoList');
+    if (list) {
+      list.innerHTML = m.top.map((r, i) =>
+        '<li class="repo-item">' +
+          '<span class="repo-rank">' + String(i + 1).padStart(2, '0') + '</span>' +
+          '<a class="repo-name" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a>' +
+          '<span class="repo-meta">' +
+            (r.lang ? '<span class="repo-lang"><i style="background:' + langColor(r.lang) + '"></i>' + esc(r.lang) + '</span>' : '') +
+            '<span>★ ' + fmt(r.stars) + '</span>' +
+          '</span>' +
+          (r.desc ? '<span class="repo-desc">' + esc(r.desc) + '</span>' : '') +
+        '</li>'
+      ).join('');
+    }
+
+    const actDate = $('#lastPushDate'), actRepo = $('#lastPushRepo');
+    if (actDate) actDate.textContent = m.lastPush ? fmtDate(m.lastPush.at) : '—';
+    if (actRepo) {
+      actRepo.textContent = m.lastPush ? m.lastPush.name + ' ↗' : 'view profile ↗';
+      actRepo.setAttribute('href', m.lastPush ? m.lastPush.url : ('https://github.com/' + GH_USER));
+    }
+  }
+
+  /* ---------------- orchestration ---------------- */
+  let ghBusy = false;
+  async function tryLive(force) {
+    if (ghBusy) return;
+    ghBusy = true;
+    const btn = $('#ghRefresh');
+    if (btn) btn.style.opacity = '0.45';
+    try {
+      const data = await fetchGH();
+      const model = buildModel(data.user, data.repos);
+      writeCache(model);
+      render(model, 'live', Date.now());
+    } catch (err) {
+      if (force) toast('GitHub API unavailable — snapshot shown');
+      if (!rendered) {
+        const c = readCache(true);
+        if (c) render(c.model, 'cache', c.fetchedAt);
+        else render(buildModel(FALLBACK_RAW.user, FALLBACK_RAW.repos), 'snapshot', null);
+      }
+    } finally {
+      ghBusy = false;
+      if (btn) btn.style.opacity = '';
+    }
+  }
+
+  const refreshBtn = $('#ghRefresh');
+  if (refreshBtn) refreshBtn.addEventListener('click', () => {
+    try { localStorage.removeItem(CACHE_KEY); } catch (e) {}
+    tryLive(true);
+  });
+
+  (function initGH() {
+    const c = readCache();
+    if (c) { render(c.model, 'cache', c.fetchedAt); }
+    tryLive();
+  })();
 })();
